@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/jpeg" href="/erp/login_brand_logo.jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PowerBenz | Scrap Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/erp/assets/index-of1_xbOr.js"></script>
+  <link rel="modulepreload" crossorigin href="/erp/assets/vendor-Cjcics5k.js">
+  <link rel="stylesheet" crossorigin href="/erp/assets/vendor-D29JDqrz.css">
+  <link rel="stylesheet" crossorigin href="/erp/assets/index-Dhfk9ZPz.css">
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
