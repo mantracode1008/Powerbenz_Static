@@ -8,6 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  publicDir: 'public',
   build: {
     // Code splitting configuration
     rollupOptions: {
@@ -29,5 +30,7 @@ export default defineConfig({
     },
     // Set chunk size warning limit
     chunkSizeWarningLimit: 500,
+    // Exclude patterns for public directory
+    assetsInlineLimit: 4096, // Inline assets smaller than 4kb
   },
 })
