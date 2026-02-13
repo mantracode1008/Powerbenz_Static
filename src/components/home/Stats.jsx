@@ -12,14 +12,14 @@ const stats = [
 
 const Stats = () => {
     return (
-        <div className="py-12 relative z-20 -mt-20 mx-4 md:mx-auto max-w-6xl">
+        <div className="py-24 relative z-20 mx-4 md:mx-auto max-w-7xl">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-8">
                 {stats.map((stat, index) => (
                     <motion.div
                         key={stat.id}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 0.5, delay: index * 0.2 }}
                         className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center text-center border border-gray-100 hover:shadow-2xl transition-all duration-300"
                     >

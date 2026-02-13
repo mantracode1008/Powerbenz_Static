@@ -22,7 +22,7 @@ const ContactForm = () => {
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.1 }}
             className="bg-white p-8 md:p-12 rounded-2xl shadow-2xl max-w-3xl mx-auto -mt-32 relative z-20"
         >
             <div className="text-center mb-10">

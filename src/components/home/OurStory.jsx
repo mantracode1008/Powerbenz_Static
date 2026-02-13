@@ -10,23 +10,23 @@ const OurStory = () => {
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                         className="lg:w-1/2 relative"
                     >
                         <img
-                            src="/images/our-story.png"
+                            src="/images/our-story.webp"
                             alt="Professionally Managed Operations"
                             className="rounded-xl shadow-2xl w-full h-[500px] object-cover"
                         />
-                        <div className="absolute -bottom-6 -right-6 bg-primary w-48 h-48 rounded-lg -z-10 hidden md:block"></div>
+
                     </motion.div>
 
                     {/* Text Content */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false, amount: 0.3 }}
                         transition={{ duration: 0.8 }}
                         className="lg:w-1/2"
                     >

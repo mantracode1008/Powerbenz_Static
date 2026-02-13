@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
-    '/images/hero-1.jpg',
-    '/images/hero-2.jpg',
-    '/images/hero-3.jpg'
+    '/images/hero/hero-1.jpg',
+    '/images/hero/hero-2.jpg',
+    '/images/hero/hero-3.jpg'
 ];
 
 const Hero = () => {
@@ -42,23 +42,49 @@ const Hero = () => {
             {/* Content */}
             <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
                 >
-                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white mb-4 uppercase tracking-tighter leading-[0.8] drop-shadow-2xl">
-                        POWER<span className="text-primary">BENZ</span>
+                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-4 uppercase tracking-tighter leading-[0.8] drop-shadow-2xl overflow-hidden flex flex-wrap justify-center">
+                        {"POWER".split("").map((char, i) => (
+                            <motion.span
+                                key={i}
+                                initial={{ y: 100, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.8, delay: i * 0.1, ease: "circOut" }}
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
+                        <span className="text-primary flex">
+                            {"BENZ".split("").map((char, i) => (
+                                <motion.span
+                                    key={i}
+                                    initial={{ y: 100, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ duration: 0.8, delay: (i + 5) * 0.1, ease: "circOut" }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
+                        </span>
                     </h1>
-                    <div className="text-xl md:text-2xl text-white font-bold tracking-[0.4em] uppercase mb-8 opacity-80">
+                    <motion.div
+                        initial={{ opacity: 0, letterSpacing: "1em" }}
+                        animate={{ opacity: 0.8, letterSpacing: "0.4em" }}
+                        transition={{ duration: 1.5, delay: 1 }}
+                        className="text-xl md:text-2xl text-white font-bold uppercase mb-8"
+                    >
                         Industries Pvt. Ltd.
-                    </div>
+                    </motion.div>
                 </motion.div>
 
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    className="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-10 font-semibold tracking-wide dropshadow-md"
+                    transition={{ duration: 1, delay: 2 }}
+                    className="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-10 font-medium tracking-wide"
                 >
                     A Professionally Managed Scrap Trading Company
                 </motion.p>

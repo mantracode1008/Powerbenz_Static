@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 
+import inspectionHeroImg from '../../assets/services/inspection_process.png';
+
 const steps = [
     'Material verification and preliminary sorting on arrival.',
     'Advanced spectroscopy for precise chemical composition analysis.',
@@ -23,8 +25,8 @@ const InspectionProcess = () => {
                         className="lg:w-1/2"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1544411047-c491e34a24e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                            alt="Container Inspection Logistics"
+                            src={inspectionHeroImg}
+                            alt="Industrial Quality Control Inspection"
                             className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
                         />
                     </motion.div>

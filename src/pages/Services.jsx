@@ -2,7 +2,10 @@ import React from 'react';
 import ServiceGrid from '../components/services/ServiceGrid';
 import GlobalReach from '../components/services/GlobalReach';
 import InspectionProcess from '../components/services/InspectionProcess';
+import LogisticsGallery from '../components/services/LogisticsGallery';
 import { motion } from 'framer-motion';
+
+import servicesHeroImg from '../assets/services/services_hero.jpg';
 
 const Services = () => {
     return (
@@ -11,7 +14,7 @@ const Services = () => {
             <section className="relative py-24 bg-secondary overflow-hidden">
                 <div className="absolute inset-0 z-0 opacity-20">
                     <img
-                        src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                        src={servicesHeroImg}
                         alt="Services Background"
                         className="w-full h-full object-cover"
                     />
@@ -38,6 +41,7 @@ const Services = () => {
             <ServiceGrid />
             <GlobalReach />
             <InspectionProcess />
+            <LogisticsGallery />
         </div>
     );
 };

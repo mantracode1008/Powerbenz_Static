@@ -1,49 +1,63 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Globe, Ship, Zap, Shield } from 'lucide-react';
+// Import the local image directly so Vite processes it correctly (hashing, path resolution)
+import globalReachImg from '../../assets/services/global_reach.png';
 
 const GlobalReach = () => {
     return (
-        <section className="py-20 bg-gray-50 overflow-hidden">
+        <section className="py-24 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="lg:w-1/2"
-                    >
-                        <h2 className="text-primary font-bold text-sm tracking-widest uppercase mb-2">Our Network</h2>
-                        <h3 className="text-3xl md:text-4xl font-bold text-secondary mb-6 tracking-tight">Global Reach, Local Expertise</h3>
-                        <p className="text-gray-600 mb-8 leading-relaxed text-lg">
-                            Through our strategically located hubs in Surat, Dubai, and Singapore, we maintain a robust supply chain that spans the globe. Our logistics experts navigate complex international regulations to ensure your materials arrive on time, every time.
-                        </p>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div className="order-2 lg:order-1">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: false, amount: 0.2 }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <h2 className="text-primary font-black text-xs tracking-[0.4em] uppercase mb-4">Strategic Logistics</h2>
+                            <h3 className="text-4xl md:text-6xl font-black text-secondary uppercase tracking-tighter leading-none mb-8">Global Reach,<br /><span className="text-primary">Local Expertise</span></h3>
+                            <p className="text-gray-500 text-xl leading-relaxed font-light mb-12">
+                                Through our strategically located hubs in Surat, Dubai, and Singapore, we maintain a robust supply chain that spans the globe.
+                            </p>
+                        </motion.div>
 
-                        <div className="grid grid-cols-2 gap-8">
-                            <div>
-                                <span className="text-4xl font-bold text-primary block mb-1">35+</span>
-                                <span className="text-gray-500 uppercase text-xs font-bold tracking-wider">Countries Reached</span>
-                            </div>
-                            <div>
-                                <span className="text-4xl font-bold text-primary block mb-1">3</span>
-                                <span className="text-gray-500 uppercase text-xs font-bold tracking-wider">International Hubs</span>
-                            </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {[
+                                { title: '35+ Countries', icon: Globe },
+                                { title: '3 Int. Hubs', icon: Zap },
+                                { title: 'Fast Delivery', icon: Ship },
+                                { title: 'Secure Trade', icon: Shield }
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: false, amount: 0.2 }}
+                                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                                    className="p-6 rounded-3xl bg-gray-50 border border-gray-100 group hover:bg-secondary transition-colors duration-500"
+                                >
+                                    <item.icon size={28} className="text-primary mb-2 group-hover:scale-110 transition-transform" />
+                                    <h4 className="text-lg font-black text-secondary group-hover:text-white transition-colors uppercase tracking-tight">{item.title}</h4>
+                                </motion.div>
+                            ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="lg:w-1/2 relative"
+                        viewport={{ once: false, amount: 0.2 }}
+                        transition={{ duration: 1, ease: "circOut" }}
+                        className="relative order-1 lg:order-2"
                     >
+                        <div className="absolute -inset-4 bg-primary/20 rounded-[4rem] transform rotate-3 -z-10 blur-2xl opacity-50"></div>
                         <img
-                            src="/images/global-reach.png"
+                            src={globalReachImg}
                             alt="Global Reach Network"
-                            className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
+                            className="rounded-[3rem] shadow-2xl w-full h-[600px] object-cover border-[16px] border-white"
                         />
-                        <div className="absolute top-0 left-0 w-full h-full bg-secondary/10 rounded-2xl pointer-events-none"></div>
                     </motion.div>
                 </div>
             </div>
