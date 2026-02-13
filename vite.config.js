@@ -14,23 +14,28 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom'],
-          'animation': ['framer-motion'],
+          'vendor-core': ['react', 'react-dom'],
+          'vendor-utils': ['react-router-dom', 'framer-motion', 'lenis'],
+          'vendor-icons': ['lucide-react'],
         },
       },
     },
-    // Optimize bundle size
+    // Production optimizations
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console.logs in production
+        drop_console: true,
         drop_debugger: true,
+        pure_funcs: ['console.info', 'console.debug', 'console.warn'],
+      },
+      format: {
+        comments: false,
       },
     },
-    // Set chunk size warning limit
-    chunkSizeWarningLimit: 500,
-    // Exclude patterns for public directory
-    assetsInlineLimit: 4096, // Inline assets smaller than 4kb
+    // Performance tweaks
+    chunkSizeWarningLimit: 600,
+    assetsInlineLimit: 8092, // Inline assets smaller than 8kb
+    reportCompressedSize: false, // Speed up build
+    sourcemap: false, // Disable for production
   },
 })

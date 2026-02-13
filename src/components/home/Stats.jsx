@@ -4,43 +4,73 @@ import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 
 const stats = [
-    { id: 1, icon: History, value: '2003', label: 'Established Since' },
-    { id: 2, icon: Globe, value: '35+', label: 'Countries Served' },
-    { id: 3, icon: ShieldCheck, value: '100%', label: 'Quality Inspection' },
-    { id: 4, icon: Award, value: '20+', label: 'Years Experience' },
+    {
+        id: 1,
+        icon: Globe,
+        value: '35',
+        label: 'Countries Served',
+        desc: 'Global Reach'
+    },
+    {
+        id: 2,
+        icon: History,
+        value: '22',
+        label: 'Years of Excellence',
+        desc: 'Established 2003'
+    },
+    {
+        id: 3,
+        icon: ShieldCheck,
+        value: '100',
+        label: 'Quality Assurance',
+        desc: 'ISO Certified'
+    },
+    {
+        id: 4,
+        icon: Award,
+        value: '50',
+        label: 'Industry Awards',
+        desc: 'Recognized Leader'
+    },
 ];
 
-const Stats = () => {
+const Stats = React.memo(() => {
     return (
-        <div className="py-24 relative z-20 mx-4 md:mx-auto max-w-7xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-8">
-                {stats.map((stat, index) => (
-                    <motion.div
-                        key={stat.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
-                        transition={{ duration: 0.5, delay: index * 0.2 }}
-                        className="bg-white rounded-2xl shadow-xl p-8 flex flex-col items-center text-center border border-gray-100 hover:shadow-2xl transition-all duration-300"
-                    >
-                        <div className="bg-orange-50 p-5 rounded-2xl mb-6">
-                            <stat.icon size={40} className="text-primary" strokeWidth={1.5} />
-                        </div>
-                        <h3 className="text-4xl md:text-5xl font-black text-secondary mb-3 tracking-tight">
-                            {stat.value.includes('+') ? (
-                                <><CountUp end={parseInt(stat.value)} duration={2.5} />+</>
-                            ) : stat.value.includes('%') ? (
-                                <><CountUp end={parseInt(stat.value)} duration={2.5} />%</>
-                            ) : (
-                                <CountUp end={parseInt(stat.value)} duration={2.5} separator="" />
-                            )}
-                        </h3>
-                        <p className="text-gray-500 font-bold uppercase text-xs tracking-[0.2em]">{stat.label}</p>
-                    </motion.div>
-                ))}
+        <section className="py-24 bg-white relative z-20">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {stats.map((stat, index) => (
+                        <motion.div
+                            key={stat.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            className="group relative p-8 bg-[#F8FAFC] rounded-3xl border border-secondary/5 hover:border-primary/20 transition-all duration-500 hover:shadow-xl hover:-translate-y-2"
+                        >
+                            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <stat.icon size={64} className="text-secondary group-hover:text-primary transition-colors" />
+                            </div>
+
+                            <div className="mb-6">
+                                <div className="w-12 h-12 bg-white rounded-xl shadow-md flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                    <stat.icon size={24} className="text-primary" />
+                                </div>
+                                <h3 className="text-5xl font-black text-secondary mb-2 tracking-tighter">
+                                    <CountUp end={parseInt(stat.value)} duration={2.5} />
+                                    <span className="text-primary text-3xl">+</span>
+                                </h3>
+                                <div className="h-1 w-12 bg-secondary/10 group-hover:w-full group-hover:bg-primary transition-all duration-500 mb-4" />
+                            </div>
+
+                            <h4 className="text-xl font-bold text-secondary mb-1">{stat.label}</h4>
+                            <p className="text-sm font-medium text-secondary/40 uppercase tracking-wider">{stat.desc}</p>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     );
-};
+});
 
 export default Stats;

@@ -13,98 +13,93 @@ const Hero = () => {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % images.length);
-        }, 2500);
+        }, 4000);
         return () => clearInterval(timer);
     }, []);
 
     return (
-        <div className="relative h-screen flex items-center justify-center overflow-hidden bg-secondary">
-            {/* Background Images with Horizontal Slide */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#011627]">
+            {/* Background Slider */}
             <div className="absolute inset-0 z-0">
-                <AnimatePresence initial={false} custom={currentSlide}>
+                <AnimatePresence mode='wait'>
                     <motion.div
                         key={currentSlide}
                         initial={{ opacity: 0, scale: 1.1 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 2.0, ease: "easeInOut" }}
+                        transition={{ duration: 1.5, ease: "easeInOut" }}
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url('${images[currentSlide]}')` }}
+                        style={{ backgroundImage: `url('${images[currentSlide]}')`, opacity: 0.5 }}
                     >
-                        {/* Vibrant Multi-tone Overlay */}
-                        <div className="absolute inset-0 bg-secondary/40" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-secondary/80 via-transparent to-transparent" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-transparent to-primary/10" />
+                        <div className="absolute inset-0 bg-black/60" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#011627] via-transparent to-[#011627]" />
                     </motion.div>
                 </AnimatePresence>
             </div>
 
-            {/* Content */}
-            <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            {/* Content Container */}
+            <div className="relative z-10 text-center px-6 max-w-7xl mx-auto pt-40 md:pt-44 lg:pt-52 pb-20">
+
+                {/* 1. Global Recycling Partner Badge */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="mb-6 md:mb-8"
                 >
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-4 uppercase tracking-tighter leading-[0.8] drop-shadow-2xl overflow-hidden flex flex-wrap justify-center">
-                        {"POWER".split("").map((char, i) => (
-                            <motion.span
-                                key={i}
-                                initial={{ y: 100, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ duration: 0.8, delay: i * 0.1, ease: "circOut" }}
-                            >
-                                {char}
-                            </motion.span>
-                        ))}
-                        <span className="text-primary flex">
-                            {"BENZ".split("").map((char, i) => (
-                                <motion.span
-                                    key={i}
-                                    initial={{ y: 100, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ duration: 0.8, delay: (i + 5) * 0.1, ease: "circOut" }}
-                                >
-                                    {char}
-                                </motion.span>
-                            ))}
-                        </span>
-                    </h1>
-                    <motion.div
-                        initial={{ opacity: 0, letterSpacing: "1em" }}
-                        animate={{ opacity: 0.8, letterSpacing: "0.4em" }}
-                        transition={{ duration: 1.5, delay: 1 }}
-                        className="text-xl md:text-2xl text-white font-bold uppercase mb-8"
-                    >
-                        Industries Pvt. Ltd.
-                    </motion.div>
+                    <div className="inline-flex items-center px-4 md:px-6 py-1.5 md:py-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full text-white font-black text-[9px] md:text-[11px] uppercase tracking-[0.3em] md:tracking-[0.4em] shadow-2xl">
+                        <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-primary rounded-full mr-2 md:mr-3 animate-pulse" />
+                        Global Recycling Partner
+                    </div>
                 </motion.div>
 
+                {/* 2 & 3. Main Heading Sequence */}
+                <div className="mb-8 md:mb-12 overflow-hidden">
+                    <motion.h1
+                        className="text-5xl sm:text-7xl md:text-9xl lg:text-[12rem] font-black uppercase tracking-tighter leading-[0.9] md:leading-none"
+                    >
+                        <div className="overflow-hidden">
+                            <motion.span
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
+                                className="block text-white"
+                            >
+                                Power<span className="text-primary">Benz</span>
+                            </motion.span>
+                        </div>
+
+                        <div className="overflow-hidden mt-1 md:mt-2">
+                            <motion.span
+                                initial={{ y: "100%" }}
+                                animate={{ y: 0 }}
+                                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 1.2 }}
+                                className="block text-transparent outline-text italic"
+                                style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)' }}
+                            >
+                                Industries
+                            </motion.span>
+                        </div>
+                    </motion.h1>
+                </div>
+
+                {/* 4. Subtext Entrance */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 2 }}
-                    className="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-10 font-medium tracking-wide"
+                    transition={{ duration: 1, delay: 2.2 }}
+                    className="text-base md:text-2xl text-white/50 max-w-4xl mx-auto mb-10 md:mb-14 font-light tracking-wide leading-relaxed"
                 >
-                    A Professionally Managed Scrap Trading Company
+                    Bridging global supply lines with <span className="text-white font-bold border-b border-primary/30 pb-1">sustainable scrap solutions.</span>
                 </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="flex flex-col sm:flex-row gap-4 justify-center"
-                >
-                    <a
-                        href="/contact"
-                        className="bg-primary text-white px-8 py-4 rounded-md font-bold text-lg hover:bg-orange-600 transition-all transform hover:scale-105 shadow-lg inline-block"
-                    >
-                        Explore Our Solutions
-                    </a>
-
-                </motion.div>
             </div>
-        </div>
+
+            <style>{`
+                .outline-text {
+                    text-shadow: 0 0 50px rgba(0,0,0,0.5);
+                }
+            `}</style>
+        </section>
     );
 };
 

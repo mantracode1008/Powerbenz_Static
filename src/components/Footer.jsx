@@ -4,125 +4,137 @@ import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'luc
 import logo from '../assets/logo.svg';
 import { motion } from 'framer-motion';
 
-const Footer = () => {
+const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Contact', path: '/contact' }
+];
+
+const socialLinks = [
+    { icon: Linkedin, href: '#' },
+    { icon: Twitter, href: '#' },
+    { icon: Facebook, href: '#' },
+    { icon: Instagram, href: '#' }
+];
+
+const Footer = React.memo(() => {
     return (
-        <footer className="bg-secondary text-white pt-24 pb-12 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-24 mb-20">
-                    {/* Brand Info */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="lg:col-span-1"
-                    >
-                        <Link to="/" className="bg-white p-4 rounded-xl inline-flex items-center gap-4 mb-8 shadow-2xl border border-gray-100 group">
-                            <motion.img
-                                whileHover={{ rotate: 360 }}
-                                transition={{ duration: 1 }}
-                                src={logo}
-                                alt="Powerbenz Logo"
-                                className="h-14 w-auto"
-                            />
-                            <div className="flex flex-col border-l border-gray-200 pl-4">
-                                <span className="text-xl font-black text-secondary tracking-tighter leading-none group-hover:text-primary transition-colors">POWERBENZ</span>
-                                <span className="text-[8px] font-bold text-gray-400 tracking-[0.15em] leading-none mt-1 uppercase">Industries Pvt. Ltd.</span>
+        <footer className="bg-[#011627] text-white pt-20 pb-12 relative overflow-hidden">
+            {/* Background Decorative Elements */}
+            <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
+            <div className="max-w-[1400px] mx-auto px-10 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-16">
+
+                    {/* Brand Section - Slimmer spacing */}
+                    <div className="lg:col-span-4 space-y-6">
+                        <Link to="/" className="group inline-block">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-white p-2 rounded-xl shadow-xl">
+                                    <img src={logo} alt="Powerbenz" className="h-7 w-auto" loading="lazy" decoding="async" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-xl font-black tracking-tighter leading-none">
+                                        POWER<span className="text-primary">BENZ</span>
+                                    </span>
+                                    <span className="text-[7.5px] font-bold text-white/30 tracking-[0.3em] uppercase mt-1">
+                                        Industries Pvt Ltd
+                                    </span>
+                                </div>
                             </div>
                         </Link>
-                        <p className="text-gray-400 mb-8 leading-relaxed text-base font-light">
-                            Leading the industry with precision, integrity, and sustainable solutions.
-                            Powering the future through innovation and excellence.
+
+                        <p className="text-white/40 text-sm leading-relaxed max-w-xs font-light">
+                            Precision logistics and sustainable scrap solutions for the global industrial landscape.
                         </p>
-                        <div className="flex space-x-5">
-                            {[Linkedin, Twitter, Facebook, Instagram].map((Icon, i) => (
+
+                        <div className="flex gap-2.5">
+                            {socialLinks.map((social, i) => (
                                 <motion.a
                                     key={i}
-                                    href="#"
-                                    whileHover={{ y: -5, backgroundColor: '#f97316' }}
-                                    className="bg-white/10 hover:bg-primary p-3 rounded-xl transition-all duration-300"
+                                    href={social.href}
+                                    whileHover={{ y: -3, backgroundColor: 'rgba(243, 112, 33, 1)', borderColor: 'rgba(243, 112, 33, 1)' }}
+                                    className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white transition-all duration-300"
                                 >
-                                    <Icon size={20} className="text-white" />
+                                    <social.icon size={16} />
                                 </motion.a>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Quick Links */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="lg:pl-10"
-                    >
-                        <h3 className="text-xl font-bold mb-8 uppercase tracking-widest text-primary">Quick Links</h3>
+                    {/* Quick Links Section - Compact list */}
+                    <div className="lg:col-span-3">
+                        <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-8">Navigation</h4>
                         <ul className="space-y-4">
-                            {[
-                                { name: 'Home', path: '/' },
-                                { name: 'About Us', path: '/about' },
-                                { name: 'Services', path: '/services' },
-                                { name: 'Contact', path: '/contact' }
-                            ].map((link) => (
+                            {navLinks.map((link) => (
                                 <li key={link.name}>
-                                    <Link to={link.path} className="text-gray-400 hover:text-primary transition-all flex items-center group">
-                                        <motion.span
-                                            whileHover={{ x: 5 }}
-                                            className="font-medium"
-                                        >
-                                            {link.name}
-                                        </motion.span>
+                                    <Link
+                                        to={link.path}
+                                        className="text-white/30 hover:text-primary text-[11px] font-bold uppercase tracking-widest transition-all inline-flex items-center group gap-2"
+                                    >
+                                        <span className="w-0 group-hover:w-3 h-[1.5px] bg-primary transition-all duration-300" />
+                                        {link.name}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
-                    </motion.div>
+                    </div>
 
-                    {/* Contact Info */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                    >
-                        <h3 className="text-xl font-bold mb-8 uppercase tracking-widest text-primary">Get in Touch</h3>
-                        <ul className="space-y-6">
-                            <li className="flex items-start text-gray-400 group">
-                                <div className="bg-white/5 p-3 rounded-xl mr-5 group-hover:bg-primary transition-colors duration-300">
-                                    <MapPin size={24} className="text-primary group-hover:text-white transition-colors" />
+                    {/* Contact Section - Compact and clean */}
+                    <div className="lg:col-span-5">
+                        <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-8">Get In Touch</h4>
+                        <div className="space-y-6">
+                            <div className="flex gap-4 group">
+                                <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                    <MapPin size={16} className="text-primary" />
                                 </div>
-                                <span className="text-sm leading-relaxed mt-1">
-                                    Plot No.-22, Goverdhan Industrial Estate-3,<br />
-                                    Kamrej, Surat, Gujarat - 394150
-                                </span>
-                            </li>
-                            <li className="flex items-center text-gray-400 group">
-                                <div className="bg-white/5 p-3 rounded-xl mr-5 group-hover:bg-primary transition-colors duration-300">
-                                    <Phone size={24} className="text-primary group-hover:text-white transition-colors" />
+                                <div>
+                                    <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Corporate Office</p>
+                                    <p className="text-[11px] text-white/50 leading-relaxed font-medium">
+                                        PLOT NO.E/6, 5-7, MANSI TEXTILE IND-2, Navi Pardi, Kamrej, Surat - 394150
+                                    </p>
                                 </div>
-                                <span className="font-bold text-lg">+91 98251 89167</span>
-                            </li>
-                            <li className="flex items-center text-gray-400 group">
-                                <div className="bg-white/5 p-3 rounded-xl mr-5 group-hover:bg-primary transition-colors duration-300">
-                                    <Mail size={24} className="text-primary group-hover:text-white transition-colors" />
+                            </div>
+
+                            <div className="flex items-center gap-8">
+                                <div className="flex gap-4 group">
+                                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                        <Phone size={16} className="text-primary" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Direct Line</p>
+                                        <p className="text-lg font-black text-white">+91 98251 89167</p>
+                                    </div>
                                 </div>
-                                <span className="text-sm">info@powerbenzindustries.com</span>
-                            </li>
-                        </ul>
-                    </motion.div>
+
+                                <div className="flex gap-4 group">
+                                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                                        <Mail size={16} className="text-primary" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Email Support</p>
+                                        <p className="text-[11px] font-bold text-white group-hover:text-primary transition-colors">info@powerbenz.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="border-t border-white/10 pt-10 flex justify-center items-center text-sm text-gray-500 text-center"
-                >
-                    <p>&copy; {new Date().getFullYear()} Powerbenz Industries Pvt Ltd. All rights reserved.</p>
-                </motion.div>
+                {/* Bottom Bar - Super slim */}
+                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-[9px] font-black text-white/10 uppercase tracking-[0.4em]">
+                        &copy; {new Date().getFullYear()} Powerbenz Industries Pvt Ltd.
+                    </p>
+                    <div className="flex gap-8 text-[8px] font-black text-white/10 uppercase tracking-[0.2em]">
+                        <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                        <a href="#" className="hover:text-white transition-colors">Terms</a>
+                    </div>
+                </div>
             </div>
         </footer>
     );
-};
+});
 
 export default Footer;

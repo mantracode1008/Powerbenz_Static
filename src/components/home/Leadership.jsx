@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 // Import existing assets
 import raviImg from '../../assets/leadership/ravi_italiya.jpeg';
@@ -11,119 +11,92 @@ import deepImg from '../../assets/leadership/deep.png';
 const mayurbhaiImg = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
 
 const leaders = [
-    {
-        id: 1,
-        name: 'Isamaliya Jerambhai',
-        role: 'Founder',
-        image: jerambhaiImg,
-    },
-    {
-        id: 2,
-        name: 'Khanpara Prakashbhai',
-        role: 'Founder',
-        image: prakashbhaiImg,
-    },
-    {
-        id: 3,
-        name: 'Mayurbhai Bokarvadiya',
-        role: 'Managing Director',
-        image: mayurbhaiImg,
-    },
-    {
-        id: 4,
-        name: 'Ravi Italiya',
-        role: 'CEO',
-        image: raviImg,
-    },
-    {
-        id: 5,
-        name: 'Deep Rasadiya',
-        role: 'Executive Director',
-        image: deepImg,
-    },
+    { name: 'Isamaliya Jerambhai', role: 'Founder', img: jerambhaiImg },
+    { name: 'Khanpara Prakashbhai', role: 'Founder', img: prakashbhaiImg },
+    { name: 'Mayurbhai Bokarvadiya', role: 'Managing Director', img: mayurbhaiImg },
+    { name: 'Ravi Italiya', role: 'CEO', img: raviImg },
+    { name: 'Deep Rasadiya', role: 'Executive Director', img: deepImg },
 ];
 
-const Leadership = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const itemsToShow = 3;
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % leaders.length);
-        }, 4000);
-        return () => clearInterval(timer);
-    }, []);
-
-    const visibleLeaders = [];
-    for (let i = 0; i < itemsToShow; i++) {
-        visibleLeaders.push(leaders[(currentIndex + i) % leaders.length]);
-    }
+const Leadership = React.memo(() => {
+    // Duplicate the leaders array to create a seamless infinite loop
+    const displayLeaders = [...leaders, ...leaders, ...leaders];
 
     return (
-        <section className="py-24 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-primary font-bold text-sm tracking-widest uppercase mb-2">Our Visionaries</h2>
-                    <h3 className="text-3xl md:text-5xl font-bold text-secondary uppercase tracking-tight">Leadership Team</h3>
+        <section className="py-24 bg-white text-secondary overflow-hidden">
+            <div className="max-w-[1800px] mx-auto">
+
+                {/* Header */}
+                <div className="text-center mb-16 px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="inline-block px-4 py-1.5 bg-secondary/5 rounded-full text-secondary/60 font-black text-[10px] uppercase tracking-[0.3em] mb-4"
+                    >
+                        Our Visionaries
+                    </motion.div>
+                    <motion.h2
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-4xl md:text-7xl font-black text-secondary uppercase tracking-tighter"
+                    >
+                        Leadership <span className="text-primary italic">Team</span>
+                    </motion.h2>
                 </div>
 
-                <div className="relative h-[480px]">
-                    <div className="flex justify-center gap-8 px-4">
-                        <AnimatePresence mode='popLayout'>
-                            {visibleLeaders.map((leader, index) => (
-                                <motion.div
-                                    key={`${leader.id}-${(currentIndex + index) % leaders.length}`}
-                                    initial={{ opacity: 0, x: 50, scale: 0.9 }}
-                                    animate={{ opacity: 1, x: 0, scale: 1 }}
-                                    exit={{ opacity: 0, x: -50, scale: 0.9 }}
-                                    whileHover={{
-                                        y: -10,
-                                        scale: 1.02,
-                                        boxShadow: "0 20px 40px -15px rgba(249, 115, 22, 0.3)"
-                                    }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 300,
-                                        damping: 30,
-                                        opacity: { duration: 0.2 }
-                                    }}
-                                    className="w-[280px] md:w-[320px] bg-white rounded-3xl overflow-hidden group border border-gray-100 relative shadow-lg"
-                                >
-                                    <div className="h-[400px] overflow-hidden relative">
-                                        <motion.img
-                                            whileHover={{ scale: 1.1 }}
-                                            transition={{ duration: 0.8 }}
-                                            src={leader.image}
-                                            alt={leader.name}
-                                            className="w-full h-full object-cover"
-                                        />
-                                        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-secondary via-secondary/80 to-transparent opacity-100 transition-opacity duration-500" />
+                {/* Auto Sliding Track */}
+                <div className="relative flex overflow-hidden group">
+                    <motion.div
+                        className="flex gap-8 py-8"
+                        animate={{
+                            x: [0, -1 * (leaders.length * 350 + leaders.length * 32)]
+                        }}
+                        transition={{
+                            duration: 40,
+                            repeat: Infinity,
+                            ease: "linear",
+                            pauseOnHover: true
+                        }}
+                    >
+                        {displayLeaders.map((member, index) => (
+                            <div
+                                key={index}
+                                className="w-[300px] md:w-[350px] flex-shrink-0"
+                            >
+                                {/* Image Container - Simplified */}
+                                <div className="relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-secondary/5 mb-6 w-full shadow-lg group-hover:shadow-2xl transition-all duration-500">
+                                    <img
+                                        src={member.img}
+                                        alt={member.name}
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                                    />
+                                    {/* Minimal Tint Overlay */}
+                                    <div className="absolute inset-0 bg-primary/10 opacity-40 mix-blend-multiply" />
+                                </div>
 
-                                        <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 flex flex-col justify-end">
-                                            <h4 className="text-xl md:text-2xl font-black text-white leading-[1.1] uppercase tracking-tighter mb-3 group-hover:text-primary transition-colors duration-300">
-                                                {leader.name.split(' ').map((word, i) => (
-                                                    <span key={i} className="block">{word}</span>
-                                                ))}
-                                            </h4>
-                                            <div className="flex items-center gap-3">
-                                                <div className="w-8 h-[3px] bg-primary"></div>
-                                                <p className="text-primary font-black uppercase text-[11px] md:text-[13px] tracking-[0.25em] shadow-sm">
-                                                    {leader.role}
-                                                </p>
-                                            </div>
-                                        </div>
+                                {/* Name & Role */}
+                                <div className="text-center">
+                                    <h3 className="text-xl font-black text-secondary uppercase tracking-tight mb-1">
+                                        {member.name}
+                                    </h3>
+                                    <p className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">
+                                        {member.role}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </motion.div>
 
-                                        <div className="absolute inset-0 border-[8px] border-white/0 group-hover:border-white/10 transition-all duration-500 pointer-events-none rounded-3xl" />
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
-                    </div>
-
+                    {/* Left/Right Fade Out edges */}
+                    <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
                 </div>
             </div>
         </section>
     );
-};
+});
 
 export default Leadership;

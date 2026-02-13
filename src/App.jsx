@@ -15,10 +15,15 @@ const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
 const Contact = lazy(() => import('./pages/Contact'));
 
+import AnimatedBackground from './components/AnimatedBackground';
+import MetaTags from './components/MetaTags';
+
 function AppContent() {
   const location = useLocation();
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative">
+      <MetaTags />
+      <AnimatedBackground />
       <Navbar />
       <ScrollToTop />
       <main className="flex-grow">

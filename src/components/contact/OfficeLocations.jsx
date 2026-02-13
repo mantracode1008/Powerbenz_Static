@@ -1,78 +1,55 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, ArrowUpRight } from 'lucide-react';
 
 const offices = [
     {
         id: 1,
-        city: 'Surat Office',
-        country: 'India',
-        address: 'Plot No.-22, Goverdhan Industrial Estate-3, Nr. Pipodra Canal, Kamrej, Navi Paradi, Surat, Gujarat-394150 IN.',
-        phone: '+91 98251 89167',
-        email: 'info@powerbenzindustries.com',
-        mapUrl: 'https://maps.app.goo.gl/YmtBjnX6rw9cSM5i8?g_st=ac',
+        city: 'Surat HQ',
+        address: 'Plot No.-22, Goverdhan Ind-3, Kamrej, Surat, Gujarat-394150',
+        label: 'Corporate Office'
     },
     {
         id: 2,
-        city: 'Surat Warehouse',
-        country: 'India',
-        address: 'PLOT NO.E/6, 5, 6, 7, MANSI TEXTILE INDUSTRIES-2, Nr-Pipodara Canal, Navi Pardi, Kamrej, Surat, Gujarat-394150.',
-        phone: '+91 98251 89167',
-        email: 'info@powerbenzindustries.com',
-        mapUrl: 'https://maps.app.goo.gl/YmtBjnX6rw9cSM5i8?g_st=ac',
+        city: 'Global Hub',
+        address: 'Mansi Textile Ind-2, Navi Pardi, Kamrej, Surat-394150',
+        label: 'Logistics Center'
     },
 ];
 
 const OfficeLocations = () => {
     return (
-        <section className="py-24 bg-gray-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4 uppercase tracking-wide">Our Locations</h2>
-                    <div className="w-24 h-1 bg-primary mx-auto"></div>
+        <section className="py-24 bg-[#F8F9FA]">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="flex flex-col md:flex-row items-baseline justify-between mb-16 gap-6">
+                    <h2 className="text-3xl font-black text-secondary uppercase tracking-[0.2em]">Our Presence</h2>
+                    <div className="h-px flex-grow bg-secondary/10 mx-10 hidden md:block" />
+                    <p className="text-secondary/40 text-xs font-bold uppercase tracking-[0.4em]">Integrated Logistics Network</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {offices.map((office, index) => (
                         <motion.div
                             key={office.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.2 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:border-primary transition-all duration-300"
+                            initial={{ opacity: 0, scale: 0.98 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            className="group relative bg-white border border-secondary/5 rounded-3xl p-10 flex items-start gap-8 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.05)] hover:border-primary/20"
                         >
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="bg-orange-100 p-2 rounded-lg text-primary">
-                                    <MapPin size={24} />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold text-secondary">{office.city}</h3>
-                                    <p className="text-primary text-xs font-bold uppercase tracking-widest">{office.country}</p>
-                                </div>
+                            <div className="w-12 h-12 rounded-2xl bg-secondary/5 flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-white transition-all">
+                                <MapPin size={24} />
                             </div>
 
-                            <div className="space-y-4 mb-8">
-                                <div className="flex items-start gap-3">
-                                    <MapPin className="text-gray-400 mt-1 flex-shrink-0" size={18} />
-                                    <p className="text-gray-600 text-sm leading-relaxed">{office.address}</p>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Phone className="text-gray-400 flex-shrink-0" size={18} />
-                                    <p className="text-gray-600 text-sm">{office.phone}</p>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                    <Mail className="text-gray-400 flex-shrink-0" size={18} />
-                                    <p className="text-gray-600 text-sm">{office.email}</p>
-                                </div>
+                            <div className="flex-grow">
+                                <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-2">{office.label}</p>
+                                <h3 className="text-2xl font-black text-secondary uppercase tracking-tighter mb-4">{office.city}</h3>
+                                <p className="text-secondary/50 text-sm font-medium leading-relaxed max-w-[240px]">
+                                    {office.address}
+                                </p>
                             </div>
 
-                            <a
-                                href={office.mapUrl}
-                                className="text-primary font-bold text-sm uppercase tracking-wider hover:underline flex items-center gap-2"
-                            >
-                                View on Google Maps →
-                            </a>
+                            <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <ArrowUpRight size={20} className="text-primary" />
+                            </div>
                         </motion.div>
                     ))}
                 </div>
