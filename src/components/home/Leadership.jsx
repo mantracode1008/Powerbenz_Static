@@ -11,8 +11,8 @@ import deepImg from '../../assets/leadership/deep.png';
 const mayurbhaiImg = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
 
 const leaders = [
-    { name: 'Isamaliya Jerambhai', role: 'Founder', img: jerambhaiImg },
-    { name: 'Khanpara Prakashbhai', role: 'Founder', img: prakashbhaiImg },
+    { name: 'Jerambhai Isamaliya ', role: 'Founder', img: jerambhaiImg },
+    { name: 'Prakashbhai Khanpara', role: 'Founder', img: prakashbhaiImg },
     { name: 'Mayurbhai Bokarvadiya', role: 'Managing Director', img: mayurbhaiImg },
     { name: 'Ravi Italiya', role: 'CEO', img: raviImg },
     { name: 'Deep Rasadiya', role: 'Executive Director', img: deepImg },

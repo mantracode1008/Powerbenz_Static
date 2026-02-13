@@ -7,12 +7,12 @@ const MetaTags = () => {
     useEffect(() => {
         const path = location.pathname;
         let title = "Powerbenz Industries | Global Logistics & Scrap Solutions";
-        let description = "Powerbenz Industries Pvt Ltd is a leader in sustainable recycling, specializing in precision procurement and supply of ferrous and non-ferrous scrap to global markets.";
+        let description = "Powerbenz Industries Pvt Ltd is a global leader in sustainable scrap management and logistics. Connecting markets with precision, integrity, and innovation since 2003.";
 
         switch (path) {
             case '/':
                 title = "Powerbenz Industries | Global Scrap Trading & Industrial Logistics";
-                description = "Powerbenz Industries Pvt Ltd is a leader in sustainable recycling and global logistics. We bridge supply lines with precision, integrity, and innovation since 2003.";
+                description = "Powerbenz Industries Pvt Ltd is a global leader in sustainable scrap management and logistics. Connecting markets with precision, integrity, and innovation since 2003.";
                 break;
             case '/about':
                 title = "About Powerbenz Industries | Our Legacy, Vision & Values";

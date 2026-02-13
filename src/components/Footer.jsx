@@ -30,16 +30,16 @@ const Footer = React.memo(() => {
                     {/* Brand Section - Slimmer spacing */}
                     <div className="lg:col-span-4 space-y-6">
                         <Link to="/" className="group inline-block">
-                            <div className="flex items-center gap-4">
-                                <div className="bg-white p-2 rounded-xl shadow-xl">
-                                    <img src={logo} alt="Powerbenz" className="h-7 w-auto" loading="lazy" decoding="async" />
+                            <div className="flex items-center gap-3">
+                                <div className="bg-white p-1.5 md:p-2 rounded-[1rem] md:rounded-xl shadow-xl transition-transform group-hover:rotate-12 flex items-center justify-center">
+                                    <img src={logo} alt="Powerbenz" className="h-8 md:h-9 w-auto" loading="lazy" decoding="async" />
                                 </div>
-                                <div className="flex flex-col">
-                                    <span className="text-xl font-black tracking-tighter leading-none">
-                                        POWER<span className="text-primary">BENZ</span>
-                                    </span>
-                                    <span className="text-[7.5px] font-bold text-white/30 tracking-[0.3em] uppercase mt-1">
-                                        Industries Pvt Ltd
+                                <div className="flex flex-col items-start justify-center -space-y-0.5">
+                                    <h1 className="text-lg md:text-xl font-serif font-bold text-white tracking-wide uppercase leading-none">
+                                        POWERBENZ
+                                    </h1>
+                                    <span className="text-[7px] md:text-[8px] font-serif text-white/90 tracking-[0.2em] font-medium uppercase">
+                                        INDUSTRIES PVT. LTD.
                                     </span>
                                 </div>
                             </div>

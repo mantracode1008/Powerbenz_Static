@@ -33,16 +33,16 @@ const Navbar = React.memo(() => {
 
                     {/* Brand Section - Fixed Contrast */}
                     <div className="flex-shrink-0">
-                        <Link to="/" className="flex items-center gap-2 md:gap-4 group">
-                            <div className="bg-white p-1.5 md:p-2.5 rounded-[1rem] md:rounded-2xl shadow-xl transition-transform group-hover:rotate-12 flex items-center justify-center">
-                                <img src={logo} alt="Powerbenz" className="h-6 md:h-8 w-auto" loading="eager" />
+                        <Link to="/" className="flex items-center gap-3 group">
+                            <div className="bg-white p-1.5 md:p-2 rounded-[1rem] md:rounded-2xl shadow-xl transition-transform group-hover:rotate-12 flex items-center justify-center">
+                                <img src={logo} alt="Powerbenz" className="h-8 md:h-10 w-auto" loading="eager" />
                             </div>
-                            <div className="flex flex-col">
-                                <h1 className="text-xl md:text-2xl lg:text-3xl font-black uppercase tracking-tighter leading-none text-white">
-                                    POWER<span className="text-primary">BENZ</span>
+                            <div className="flex flex-col items-start justify-center -space-y-0.5">
+                                <h1 className="text-lg md:text-2xl font-serif font-bold text-white tracking-wide uppercase leading-none">
+                                    POWERBENZ
                                 </h1>
-                                <span className="text-[7px] md:text-[9px] font-bold uppercase tracking-[0.3em] mt-0.5 md:mt-1 text-white/40">
-                                    Industries Pvt Ltd
+                                <span className="text-[7px] md:text-[9px] font-serif text-white/90 tracking-[0.2em] font-medium uppercase">
+                                    INDUSTRIES PVT. LTD.
                                 </span>
                             </div>
                         </Link>
