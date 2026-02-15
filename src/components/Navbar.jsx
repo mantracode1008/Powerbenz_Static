@@ -4,6 +4,8 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.svg';
 
+import MobileMenu from './MobileMenu';
+
 const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -27,7 +29,7 @@ const Navbar = React.memo(() => {
 
     return (
         <header>
-            <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? 'h-20 bg-[#011627]/95 backdrop-blur-xl shadow-2xl' : 'h-24 bg-transparent'
+            <nav className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${scrolled ? 'h-20 bg-[#011627]/95 backdrop-blur-xl shadow-2xl' : 'h-24 bg-transparent'
                 }`}>
                 <div className="max-w-[1800px] mx-auto h-full px-4 md:px-12 flex justify-between items-center">
 
@@ -90,50 +92,16 @@ const Navbar = React.memo(() => {
                     </div>
                 </div>
 
-                {/* Mobile Menu Overlay */}
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, x: '100%' }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: '100%' }}
-                            className="fixed inset-0 z-50 bg-[#011627] flex flex-col items-center justify-center p-10"
-                        >
-                            <button onClick={() => setIsOpen(false)} className="absolute top-10 right-10 text-white/40 hover:text-white">
-                                <X size={48} />
-                            </button>
-
-                            <div className="flex flex-col items-center space-y-8">
-                                {navLinks.map((link, index) => (
-                                    <motion.div
-                                        key={link.name}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                    >
-                                        <Link
-                                            to={link.path}
-                                            onClick={() => setIsOpen(false)}
-                                            className={`text-5xl font-black uppercase tracking-tighter ${isActive(link.path) ? 'text-primary' : 'text-white'}`}
-                                        >
-                                            {link.name}
-                                        </Link>
-                                    </motion.div>
-                                ))}
-                                <Link
-                                    to="/contact"
-                                    onClick={() => setIsOpen(false)}
-                                    className="mt-10 bg-primary text-white px-12 py-5 rounded-2xl font-black text-lg uppercase tracking-widest shadow-2xl"
-                                >
-                                    Get A Quote
-                                </Link>
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                <MobileMenu
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    navLinks={navLinks}
+                    isActive={isActive}
+                />
             </nav>
         </header>
     );
 });
+
 
 export default Navbar;

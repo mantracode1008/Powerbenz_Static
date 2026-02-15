@@ -69,23 +69,23 @@ const ContactForm = () => {
                             <form className="space-y-10">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                     <div className="relative">
-                                        <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'name' ? 'text-primary' : 'text-white/10'}`}>01 // Name</p>
+                                        <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'name' ? 'text-primary' : 'text-white/40'}`}>01 // Name</p>
                                         <input
                                             type="text"
                                             onFocus={() => setIsFocused('name')}
                                             onBlur={() => setIsFocused(null)}
-                                            className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/5 h-12"
+                                            className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 h-12"
                                             placeholder="Your Name"
                                         />
                                         <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'name' ? 'w-full' : 'w-0'}`} />
                                     </div>
                                     <div className="relative">
-                                        <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'company' ? 'text-primary' : 'text-white/10'}`}>02 // Company</p>
+                                        <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'company' ? 'text-primary' : 'text-white/40'}`}>02 // Company</p>
                                         <input
                                             type="text"
                                             onFocus={() => setIsFocused('company')}
                                             onBlur={() => setIsFocused(null)}
-                                            className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/5 h-12"
+                                            className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 h-12"
                                             placeholder="Company Name"
                                         />
                                         <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'company' ? 'w-full' : 'w-0'}`} />
@@ -94,23 +94,23 @@ const ContactForm = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                     <div className="relative">
-                                        <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'email' ? 'text-primary' : 'text-white/10'}`}>03 // Email</p>
+                                        <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'email' ? 'text-primary' : 'text-white/40'}`}>03 // Email</p>
                                         <input
                                             type="email"
                                             onFocus={() => setIsFocused('email')}
                                             onBlur={() => setIsFocused(null)}
-                                            className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/5 h-12"
+                                            className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 h-12"
                                             placeholder="John@doe.com"
                                         />
                                         <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'email' ? 'w-full' : 'w-0'}`} />
                                     </div>
                                     <div className="relative">
-                                        <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'phone' ? 'text-primary' : 'text-white/10'}`}>04 // Support</p>
+                                        <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'phone' ? 'text-primary' : 'text-white/40'}`}>04 // Support</p>
                                         <input
                                             type="tel"
                                             onFocus={() => setIsFocused('phone')}
                                             onBlur={() => setIsFocused(null)}
-                                            className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/5 h-12"
+                                            className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 h-12"
                                             placeholder="+91 --- --- ----"
                                         />
                                         <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'phone' ? 'w-full' : 'w-0'}`} />
@@ -118,12 +118,12 @@ const ContactForm = () => {
                                 </div>
 
                                 <div className="relative">
-                                    <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'message' ? 'text-primary' : 'text-white/10'}`}>05 // Message</p>
+                                    <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'message' ? 'text-primary' : 'text-white/40'}`}>05 // Message</p>
                                     <textarea
                                         rows="3"
                                         onFocus={() => setIsFocused('message')}
                                         onBlur={() => setIsFocused(null)}
-                                        className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/5 resize-none min-h-[100px]"
+                                        className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 resize-none min-h-[100px]"
                                         placeholder="How can we help?"
                                     />
                                     <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'message' ? 'w-full' : 'w-0'}`} />

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
+    { name: 'About U    s', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Contact', path: '/contact' }
 ];
@@ -92,7 +92,7 @@ const Footer = React.memo(() => {
                                 <div>
                                     <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Corporate Office</p>
                                     <p className="text-[11px] text-white/50 leading-relaxed font-medium">
-                                        PLOT NO.E/6, 5-7, MANSI TEXTILE IND-2, Navi Pardi, Kamrej, Surat - 394150
+                                        PLOT NO.E-5,6,7 MANSI TEXTILE IND-2, Navi Pardi, Kamrej, Surat - 394150
                                     </p>
                                 </div>
                             </div>

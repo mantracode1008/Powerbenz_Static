@@ -28,14 +28,14 @@ const VisionMission = React.memo(() => {
     return (
         <section ref={ref} className="py-32 bg-[#011627] relative overflow-hidden text-white">
 
-            {/* Background Texture */}
-            <div className="absolute inset-0 opacity-[0.05]"
-                style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }}
+            {/* Background Texture - Optimized */}
+            <div className="absolute inset-0 opacity-[0.03]"
+                style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}
             />
 
-            {/* Glowing Orbs */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[120px] pointer-events-none" />
+            {/* Glowing Orbs - Reduced blur for much better performance */}
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] pointer-events-none opacity-50" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-[60px] pointer-events-none opacity-50" />
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-20">
@@ -68,7 +68,7 @@ const VisionMission = React.memo(() => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.2 }}
-                            className="group relative p-10 bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-3xl hover:bg-white/[0.08] transition-all duration-500 hover:-translate-y-2"
+                            className="group relative p-10 bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-3xl hover:bg-white/[0.08] transition-all duration-500"
                         >
                             <div className="w-16 h-16 bg-gradient-to-br from-primary to-orange-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-500">
                                 <item.icon size={32} className="text-white" strokeWidth={1.5} />

@@ -3,12 +3,7 @@ import { motion } from 'framer-motion';
 import { MapPin, ArrowUpRight } from 'lucide-react';
 
 const offices = [
-    {
-        id: 1,
-        city: 'Surat HQ',
-        address: 'Plot No.-22, Goverdhan Ind-3, Kamrej, Surat, Gujarat-394150',
-        label: 'Corporate Office'
-    },
+
     {
         id: 2,
         city: 'Global Hub',
@@ -27,13 +22,13 @@ const OfficeLocations = () => {
                     <p className="text-secondary/40 text-xs font-bold uppercase tracking-[0.4em]">Integrated Logistics Network</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="flex flex-wrap justify-center gap-8">
                     {offices.map((office, index) => (
                         <motion.div
                             key={office.id}
                             initial={{ opacity: 0, scale: 0.98 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            className="group relative bg-white border border-secondary/5 rounded-3xl p-10 flex items-start gap-8 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.05)] hover:border-primary/20"
+                            className="group relative bg-white border border-secondary/5 rounded-3xl p-10 flex items-start gap-8 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.05)] hover:border-primary/20 w-full max-w-2xl"
                         >
                             <div className="w-12 h-12 rounded-2xl bg-secondary/5 flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-white transition-all">
                                 <MapPin size={24} />
@@ -42,7 +37,7 @@ const OfficeLocations = () => {
                             <div className="flex-grow">
                                 <p className="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-2">{office.label}</p>
                                 <h3 className="text-2xl font-black text-secondary uppercase tracking-tighter mb-4">{office.city}</h3>
-                                <p className="text-secondary/50 text-sm font-medium leading-relaxed max-w-[240px]">
+                                <p className="text-secondary/50 text-sm font-medium leading-relaxed">
                                     {office.address}
                                 </p>
                             </div>

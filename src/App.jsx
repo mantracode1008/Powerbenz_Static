@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SmoothScroll from './components/SmoothScroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Loading from './components/Loading';
@@ -47,7 +46,7 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <SmoothScroll />
+
         <AppContent />
       </Router>
     </ErrorBoundary>
