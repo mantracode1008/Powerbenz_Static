@@ -28,9 +28,15 @@ const HeroDesktop = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1.5, ease: "easeInOut" }}
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url('${images[currentSlide]}')`, opacity: 0.5 }}
+                        className="absolute inset-0"
                     >
+                        <img
+                            src={images[currentSlide]}
+                            alt="Background"
+                            className="absolute inset-0 w-full h-full object-cover opacity-50"
+                            fetchpriority="high"
+                            loading="eager"
+                        />
                         <div className="absolute inset-0 bg-black/60" />
                         <div className="absolute inset-0 bg-gradient-to-b from-[#011627] via-transparent to-[#011627]" />
                     </motion.div>

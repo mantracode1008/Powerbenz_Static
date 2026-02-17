@@ -23,13 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 
-# Deployment scripts (contain credentials)
-check_remote_dir.js
-check_timestamp.js
-deploy.js
-find_index.js
-find_web_root.js
-find_web_root_v2.js
-find_web_root_v3.js
-find_web_root_v4.js
-verify_paths.js

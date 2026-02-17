@@ -28,9 +28,15 @@ const HeroMobile = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 1 }}
-                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url('${images[currentSlide]}')`, opacity: 0.4 }}
+                        className="absolute inset-0"
                     >
+                        <img
+                            src={images[currentSlide]}
+                            alt="Background"
+                            className="absolute inset-0 w-full h-full object-cover opacity-40"
+                            fetchpriority="high"
+                            loading="eager"
+                        />
                         <div className="absolute inset-0 bg-black/70" />
                         <div className="absolute inset-0 bg-gradient-to-b from-[#011627] via-transparent to-[#011627]" />
                     </motion.div>
@@ -54,7 +60,7 @@ const HeroMobile = () => {
                 {/* Main Heading */}
                 <div className="mb-8">
                     <motion.h1
-                        className="text-[14vw] font-black uppercase tracking-tighter leading-[0.85]"
+                        className="text-[14vw] font-black uppercase tracking-tighter leading-[0.95]"
                     >
                         <motion.span
                             initial={{ opacity: 0, x: -20 }}

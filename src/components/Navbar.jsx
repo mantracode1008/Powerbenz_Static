@@ -36,14 +36,14 @@ const Navbar = React.memo(() => {
                     {/* Brand Section - Fixed Contrast */}
                     <div className="flex-shrink-0">
                         <Link to="/" className="flex items-center gap-3 group">
-                            <div className="bg-white p-1.5 md:p-2 rounded-[1rem] md:rounded-2xl shadow-xl transition-transform group-hover:rotate-12 flex items-center justify-center">
-                                <img src={logo} alt="Powerbenz" className="h-8 md:h-10 w-auto" loading="eager" />
+                            <div className="bg-white p-1.5 md:p-2 rounded-[1rem] md:rounded-2xl shadow-xl flex items-center justify-center">
+                                <img src={logo} alt="Powerbenz" className="h-8 md:h-10 w-auto" width="40" height="40" loading="eager" />
                             </div>
-                            <div className="flex flex-col items-start justify-center -space-y-0.5">
-                                <h1 className="text-lg md:text-2xl font-serif font-bold text-white tracking-wide uppercase leading-none">
+                            <div className="flex flex-col items-start justify-center -space-y-1">
+                                <h1 className="text-lg md:text-2xl font-serif font-black text-white tracking-widest uppercase leading-none">
                                     POWERBENZ
                                 </h1>
-                                <span className="text-[7px] md:text-[9px] font-serif text-white/90 tracking-[0.2em] font-medium uppercase">
+                                <span className="text-[7px] md:text-[9px] font-sans text-white/80 tracking-[0.2em] font-medium uppercase">
                                     INDUSTRIES PVT. LTD.
                                 </span>
                             </div>

@@ -29,8 +29,8 @@ const milestones = [
     },
     {
         year: '2020',
-        title: 'Eco-Innovation Award',
-        description: 'Recognized for our contributions to sustainable recycling practices and zero-waste industrial initiatives.',
+        title: 'Excellence in Trade',
+        description: 'Awarded for outstanding contribution to the import-export sector and strictly ethical business practices.',
         icon: Award
     },
     {

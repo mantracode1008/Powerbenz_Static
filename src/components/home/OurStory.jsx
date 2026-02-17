@@ -14,7 +14,7 @@ const OurStory = React.memo(() => {
     const imageScale = useTransform(scrollYProgress, [0, 1], [1.1, 1]);
 
     return (
-        <section ref={sectionRef} className="py-32 bg-white relative overflow-hidden">
+        <section ref={sectionRef} className="py-16 md:py-32 bg-white relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
                 {/* Left: Text Content */}

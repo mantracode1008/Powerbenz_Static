@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { X, ChevronRight, Phone, Mail, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -16,7 +17,7 @@ const MobileMenu = ({ isOpen, setIsOpen, navLinks, isActive }) => {
         };
     }, [isOpen]);
 
-    return (
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <>
@@ -26,7 +27,7 @@ const MobileMenu = ({ isOpen, setIsOpen, navLinks, isActive }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setIsOpen(false)}
-                        className="fixed inset-0 z-[1001] bg-[#011627]/90 backdrop-blur-md lg:hidden"
+                        className="fixed inset-0 z-[9998] bg-[#011627]/90 backdrop-blur-md lg:hidden"
                     />
 
                     {/* Sidebar Drawer - Solid Background and highest z-index */}
@@ -35,7 +36,7 @@ const MobileMenu = ({ isOpen, setIsOpen, navLinks, isActive }) => {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed top-0 right-0 h-full w-[85%] max-w-[360px] z-[1002] bg-[#011627] shadow-[-20px_0_50px_rgba(0,0,0,0.5)] lg:hidden flex flex-col border-l border-white/5"
+                        className="fixed top-0 right-0 h-full w-[85%] max-w-[360px] z-[9999] bg-[#011627] shadow-[-20px_0_50px_rgba(0,0,0,0.5)] lg:hidden flex flex-col border-l border-white/5"
                     >
                         {/* Header Area */}
                         <div className="flex items-center justify-between p-6 border-b border-white/5">
@@ -76,8 +77,8 @@ const MobileMenu = ({ isOpen, setIsOpen, navLinks, isActive }) => {
                                             <ChevronRight
                                                 size={22}
                                                 className={`transition-all duration-300 ${isActive(link.path)
-                                                        ? 'translate-x-0 opacity-100 text-primary'
-                                                        : '-translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'
+                                                    ? 'translate-x-0 opacity-100 text-primary'
+                                                    : '-translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'
                                                     }`}
                                             />
                                         </Link>
@@ -89,7 +90,7 @@ const MobileMenu = ({ isOpen, setIsOpen, navLinks, isActive }) => {
                             <div className="mt-12 space-y-6 pt-8 border-t border-white/5">
                                 <div className="flex items-center gap-4 text-white/40">
                                     <Phone size={16} className="text-primary" />
-                                    <span className="text-[11px] font-bold uppercase tracking-widest">+91 999 888 7777</span>
+                                    <span className="text-[11px] font-bold uppercase tracking-widest">+91 98251 89167</span>
                                 </div>
                                 <div className="flex items-center gap-4 text-white/40">
                                     <Mail size={16} className="text-primary" />
@@ -132,7 +133,8 @@ const MobileMenu = ({ isOpen, setIsOpen, navLinks, isActive }) => {
                     </motion.div>
                 </>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 };
 

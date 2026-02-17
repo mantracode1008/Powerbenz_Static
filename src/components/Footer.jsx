@@ -85,20 +85,25 @@ const Footer = React.memo(() => {
                     <div className="lg:col-span-5">
                         <h4 className="text-[9px] font-black uppercase tracking-[0.3em] text-primary mb-8">Get In Touch</h4>
                         <div className="space-y-6">
-                            <div className="flex gap-4 group">
+                            <a
+                                href="https://www.google.com/maps/search/?api=1&query=PLOT+NO.E-5,6,7+MANSI+TEXTILE+IND-2,+Navi+Pardi,+Kamrej,+Surat+-+394150"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex gap-4 group hover:opacity-80 transition-opacity"
+                            >
                                 <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                                     <MapPin size={16} className="text-primary" />
                                 </div>
                                 <div>
                                     <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Corporate Office</p>
                                     <p className="text-[11px] text-white/50 leading-relaxed font-medium">
-                                        PLOT NO.E-5,6,7 MANSI TEXTILE IND-2, Navi Pardi, Kamrej, Surat - 394150
+                                        Plot NO.E/6 5,6,7 Mansi Textile IND-2, Navi Pardi, Kamrej, Surat - 394150
                                     </p>
                                 </div>
-                            </div>
+                            </a>
 
-                            <div className="flex items-center gap-8">
-                                <div className="flex gap-4 group">
+                            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                                <a href="tel:+919825189167" className="flex gap-4 group hover:opacity-80 transition-opacity">
                                     <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                                         <Phone size={16} className="text-primary" />
                                     </div>
@@ -106,9 +111,9 @@ const Footer = React.memo(() => {
                                         <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Direct Line</p>
                                         <p className="text-lg font-black text-white">+91 98251 89167</p>
                                     </div>
-                                </div>
+                                </a>
 
-                                <div className="flex gap-4 group">
+                                <a href="mailto:info@powerbenz.com" className="flex gap-4 group hover:opacity-80 transition-opacity">
                                     <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                                         <Mail size={16} className="text-primary" />
                                     </div>
@@ -116,7 +121,7 @@ const Footer = React.memo(() => {
                                         <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Email Support</p>
                                         <p className="text-[11px] font-bold text-white group-hover:text-primary transition-colors">info@powerbenz.com</p>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>

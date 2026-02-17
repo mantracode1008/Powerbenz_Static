@@ -19,6 +19,12 @@ import MetaTags from './components/MetaTags';
 
 function AppContent() {
   const location = useLocation();
+
+  // Scroll to top on route change
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <div className="flex flex-col min-h-screen relative">
       <MetaTags />

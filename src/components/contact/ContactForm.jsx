@@ -12,6 +12,54 @@ const ContactForm = () => {
     });
 
     const [isFocused, setIsFocused] = useState(null);
+    const [status, setStatus] = useState({ type: null, message: null, isSubmitting: false });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus({ type: null, message: null, isSubmitting: true });
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/info@powerbenz.com", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    _subject: "New Inquiry from Powerbenz Website",
+                    _template: "table"
+                })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                setStatus({
+                    type: 'success',
+                    message: "Thank receive your request! We'll be in touch shortly."
+                });
+                setFormData({ name: '', company: '', email: '', phone: '', message: '' });
+            } else {
+                setStatus({
+                    type: 'error',
+                    message: "Something went wrong. Please try again or email us directly."
+                });
+            }
+        } catch (error) {
+            setStatus({
+                type: 'error',
+                message: "Connection failed. Please check your internet."
+            });
+        } finally {
+            setStatus(prev => ({ ...prev, isSubmitting: false }));
+            setTimeout(() => setStatus({ type: null, message: null, isSubmitting: false }), 5000);
+        }
+    };
 
     return (
         <section className="py-20 bg-white relative">
@@ -66,16 +114,20 @@ const ContactForm = () => {
 
                         {/* The Engine: Interactive Form (8 Columns) - Compact inputs */}
                         <div className="lg:col-span-8">
-                            <form className="space-y-10">
+                            <form className="space-y-10" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                     <div className="relative">
                                         <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'name' ? 'text-primary' : 'text-white/40'}`}>01 // Name</p>
                                         <input
                                             type="text"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
                                             onFocus={() => setIsFocused('name')}
                                             onBlur={() => setIsFocused(null)}
                                             className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 h-12"
                                             placeholder="Your Name"
+                                            required
                                         />
                                         <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'name' ? 'w-full' : 'w-0'}`} />
                                     </div>
@@ -83,6 +135,9 @@ const ContactForm = () => {
                                         <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'company' ? 'text-primary' : 'text-white/40'}`}>02 // Company</p>
                                         <input
                                             type="text"
+                                            name="company"
+                                            value={formData.company}
+                                            onChange={handleChange}
                                             onFocus={() => setIsFocused('company')}
                                             onBlur={() => setIsFocused(null)}
                                             className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 h-12"
@@ -97,10 +152,14 @@ const ContactForm = () => {
                                         <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'email' ? 'text-primary' : 'text-white/40'}`}>03 // Email</p>
                                         <input
                                             type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
                                             onFocus={() => setIsFocused('email')}
                                             onBlur={() => setIsFocused(null)}
                                             className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 h-12"
                                             placeholder="John@doe.com"
+                                            required
                                         />
                                         <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'email' ? 'w-full' : 'w-0'}`} />
                                     </div>
@@ -108,10 +167,14 @@ const ContactForm = () => {
                                         <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'phone' ? 'text-primary' : 'text-white/40'}`}>04 // Support</p>
                                         <input
                                             type="tel"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
                                             onFocus={() => setIsFocused('phone')}
                                             onBlur={() => setIsFocused(null)}
                                             className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 h-12"
                                             placeholder="+91 --- --- ----"
+                                            required
                                         />
                                         <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'phone' ? 'w-full' : 'w-0'}`} />
                                     </div>
@@ -120,22 +183,39 @@ const ContactForm = () => {
                                 <div className="relative">
                                     <p className={`absolute -top-5 left-0 text-[8px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${isFocused === 'message' ? 'text-primary' : 'text-white/40'}`}>05 // Message</p>
                                     <textarea
+                                        name="message"
                                         rows="3"
+                                        value={formData.message}
+                                        onChange={handleChange}
                                         onFocus={() => setIsFocused('message')}
                                         onBlur={() => setIsFocused(null)}
                                         className="w-full bg-transparent border-b border-white/5 py-3 text-lg font-bold text-white outline-none focus:border-primary transition-colors placeholder:text-white/40 resize-none min-h-[100px]"
                                         placeholder="How can we help?"
+                                        required
                                     />
                                     <div className={`absolute bottom-0 left-0 h-px bg-primary transition-all duration-700 ${isFocused === 'message' ? 'w-full' : 'w-0'}`} />
                                 </div>
 
+                                {status.message && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: -10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className={`text-sm font-bold tracking-wide p-4 rounded-lg flex items-center gap-2 ${status.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+                                            }`}
+                                    >
+                                        {status.type === 'success' && <CheckCircle size={16} />}
+                                        {status.message}
+                                    </motion.div>
+                                )}
+
                                 <motion.button
                                     whileHover={{ scale: 1.01 }}
                                     whileTap={{ scale: 0.99 }}
-                                    className="group w-full h-16 bg-primary rounded-xl flex items-center justify-center gap-4 overflow-hidden relative shadow-lg shadow-primary/20"
+                                    disabled={status.isSubmitting}
+                                    className="group w-full h-16 bg-primary rounded-xl flex items-center justify-center gap-4 overflow-hidden relative shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <span className="relative z-10 flex items-center gap-3 text-white font-black text-[10px] uppercase tracking-[0.4em]">
-                                        Submit Request <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                        {status.isSubmitting ? 'Sending...' : 'Submit Request'} <Send size={16} className={`group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ${status.isSubmitting ? 'hidden' : ''}`} />
                                     </span>
                                     <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                                 </motion.button>

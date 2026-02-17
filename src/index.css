@@ -4,6 +4,7 @@
   --color-primary: #F37021;
   --color-secondary: #011627;
   --font-sans: "Inter", "ui-sans-serif", "system-ui", "sans-serif";
+  --font-serif: "Cinzel", "ui-serif", "Georgia", "serif";
 }
 
 @layer base {

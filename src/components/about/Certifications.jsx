@@ -1,37 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import { ShieldCheck, Leaf, Globe2, Recycle } from 'lucide-react';
+import { ShieldCheck, Globe2, Award, FileCheck } from 'lucide-react';
 
 const certs = [
+
     {
-        name: 'ISO 9001:2015',
-        icon: ShieldCheck,
-        color: 'text-blue-600',
-        brand: 'ISO',
-        description: 'Quality Management Systems'
-    },
-    {
-        name: 'ISO 14001:2015',
-        icon: Leaf,
+        name: 'PCB Authorized',
+        icon: FileCheck,
         color: 'text-green-600',
-        brand: 'ISO',
-        description: 'Environmental Management'
+        brand: 'GPCB',
+        description: 'Pollution Control Compliant'
     },
     {
-        name: 'BIR Member',
-        icon: Recycle,
-        color: 'text-orange-600',
-        brand: 'BIR',
-        description: 'Bureau of International Recycling'
-    },
-    {
-        name: 'MRAI Member',
+        name: 'Global Trade Compliance',
         icon: Globe2,
-        color: 'text-navy-600',
-        brand: 'MRAI',
-        description: 'Material Recycling Association of India'
+        color: 'text-blue-600',
+        brand: 'DGFT',
+        description: 'Directorate General of Foreign Trade'
     },
+
 ];
 
 const Certifications = () => {

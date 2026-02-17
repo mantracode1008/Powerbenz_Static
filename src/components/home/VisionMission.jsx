@@ -26,7 +26,7 @@ const VisionMission = React.memo(() => {
     const y = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
 
     return (
-        <section ref={ref} className="py-32 bg-[#011627] relative overflow-hidden text-white">
+        <section ref={ref} className="py-16 md:py-32 bg-[#011627] relative overflow-hidden text-white">
 
             {/* Background Texture - Optimized */}
             <div className="absolute inset-0 opacity-[0.03]"

@@ -24,11 +24,14 @@ const OfficeLocations = () => {
 
                 <div className="flex flex-wrap justify-center gap-8">
                     {offices.map((office, index) => (
-                        <motion.div
+                        <motion.a
                             key={office.id}
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.address)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             initial={{ opacity: 0, scale: 0.98 }}
                             whileInView={{ opacity: 1, scale: 1 }}
-                            className="group relative bg-white border border-secondary/5 rounded-3xl p-10 flex items-start gap-8 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.05)] hover:border-primary/20 w-full max-w-2xl"
+                            className="group relative bg-white border border-secondary/5 rounded-3xl p-10 flex items-start gap-8 transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.05)] hover:border-primary/20 w-full max-w-2xl block"
                         >
                             <div className="w-12 h-12 rounded-2xl bg-secondary/5 flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-white transition-all">
                                 <MapPin size={24} />
@@ -45,7 +48,7 @@ const OfficeLocations = () => {
                             <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <ArrowUpRight size={20} className="text-primary" />
                             </div>
-                        </motion.div>
+                        </motion.a>
                     ))}
                 </div>
             </div>
