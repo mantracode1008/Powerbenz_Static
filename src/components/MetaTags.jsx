@@ -6,13 +6,13 @@ const MetaTags = () => {
 
     useEffect(() => {
         const path = location.pathname;
-        let title = "Powerbenz Industries | #1 Global Scrap Trading & Recycling Company";
-        let description = "Powerbenz Industries is the world's leading scrap trading company. We buy and sell Ferrous, Non-Ferrous, and Industrial Scrap with global logistics support. Top prices for scrap.";
+        let title = "Powerbenz Industries Pvt Ltd | Professional Scrap Trading in Surat";
+        let description = "Powerbenz Industries Pvt Ltd is a professionally managed scrap trading company specializing in the procurement and supply of ferrous and non-ferrous metals.";
 
         switch (path) {
             case '/':
-                title = "Powerbenz Industries | Top Scrap Traders & Global Logistics Partner";
-                description = "Looking for the best scrap trading company? Powerbenz buys and sells HMS, Copper, Aluminum, and Industrial Scrap. Efficient logistics and competitive pricing guaranteed.";
+                title = "Powerbenz Industries Pvt Ltd | Professional Scrap Trading in Surat";
+                description = "Powerbenz Industries Pvt Ltd is a professionally managed scrap trading company specializing in the procurement and supply of ferrous and non-ferrous metals.";
                 break;
             case '/about':
                 title = "About Powerbenz | Leading the Scrap Recycling Industry Since 2003";
