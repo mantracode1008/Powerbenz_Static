@@ -1,0 +1,15 @@
+{
+    "name": "Powerbenz Industries Pvt Ltd",
+    "short_name": "Powerbenz",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#011627",
+    "theme_color": "#011627",
+    "icons": [
+        {
+            "src": "/logo.svg",
+            "type": "image/svg+xml",
+            "sizes": "192x192 512x512"
+        }
+    ]
+}
