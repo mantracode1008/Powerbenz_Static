@@ -24,7 +24,7 @@ const MetaTags = () => {
                 break;
             case '/contact':
                 title = "Contact Powerbenz | Get a Quote for Your Scrap";
-                description = "Connect with Powerbenz Industries for scrap trading inquiries. Offices in Surat, Dubai, and Singapore. Call us today for the best scrap metal rates.";
+                description = "Connect with Powerbenz Industries for scrap trading inquiries. Based in Surat. Call us today for the best scrap metal rates.";
                 break;
             default:
                 break;

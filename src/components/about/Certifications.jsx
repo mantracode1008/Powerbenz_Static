@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import { ShieldCheck, Globe2, Award, FileCheck } from 'lucide-react';
+import { ShieldCheck, Globe2, FileCheck } from 'lucide-react';
 
 const certs = [
 

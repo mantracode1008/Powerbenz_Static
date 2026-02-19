@@ -1,5 +1,5 @@
 import React from 'react';
-import { History, Globe, ShieldCheck, Award } from 'lucide-react';
+import { History, Globe, ShieldCheck, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 
@@ -27,10 +27,10 @@ const stats = [
     },
     {
         id: 4,
-        icon: Award,
+        icon: Zap,
         value: '50',
-        label: 'Industry Awards',
-        desc: 'Recognized Leader'
+        label: 'Global Partners',
+        desc: 'Trusted Network'
     },
 ];
 

@@ -4,7 +4,7 @@ import {
     Factory,
     Globe,
     Warehouse,
-    Award,
+    Shield,
     Sparkles
 } from 'lucide-react';
 
@@ -29,9 +29,9 @@ const milestones = [
     },
     {
         year: '2020',
-        title: 'Excellence in Trade',
-        description: 'Awarded for outstanding contribution to the import-export sector and strictly ethical business practices.',
-        icon: Award
+        title: 'Strategic Expansion',
+        description: 'Expanded our global footprint in the import-export sector while maintaining strictly ethical business practices.',
+        icon: Shield
     },
     {
         year: '2024',
