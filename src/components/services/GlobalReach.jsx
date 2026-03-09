@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Globe, Ship, Zap, Shield, ArrowUpRight } from 'lucide-react';
+import { Globe, Ship, Zap, Shield, ArrowUpRight, SearchCheck } from 'lucide-react';
 import globalReachImg from '../../assets/services/global_reach.png';
 
 const GlobalReach = () => {
@@ -41,10 +41,10 @@ const GlobalReach = () => {
                         {/* Network Stats Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {[
-                                { title: '35+ Countries', icon: Globe, val: 'NETWORK' },
                                 { title: '3 Int. Hubs', icon: Zap, val: 'NODES' },
                                 { title: 'Global Transit', icon: Ship, val: 'LOGISTICS' },
-                                { title: 'Verified Trade', icon: Shield, val: 'PROTOCOL' }
+                                { title: 'Verified Trade', icon: Shield, val: 'PROTOCOL' },
+                                { title: 'Digital Tracking', icon: SearchCheck, val: 'VISIBILITY' }
                             ].map((item, i) => (
                                 <motion.div
                                     key={i}

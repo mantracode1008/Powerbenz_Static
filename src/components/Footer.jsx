@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About U    s', path: '/about' },
+    { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Contact', path: '/contact' }
 ];
@@ -24,7 +24,7 @@ const Footer = React.memo(() => {
             {/* Background Decorative Elements */}
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
-            <div className="max-w-[1400px] mx-auto px-10 relative z-10">
+            <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-16">
 
                     {/* Brand Section - Slimmer spacing */}
@@ -102,14 +102,14 @@ const Footer = React.memo(() => {
                                 </div>
                             </a>
 
-                            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                            <div className="flex flex-col sm:flex-row items-start gap-6 sm:gap-8">
                                 <a href="tel:+919825189167" className="flex gap-4 group hover:opacity-80 transition-opacity">
                                     <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
                                         <Phone size={16} className="text-primary" />
                                     </div>
                                     <div>
                                         <p className="text-[8px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">Direct Line</p>
-                                        <p className="text-lg font-black text-white">+91 98251 89167</p>
+                                        <p className="text-lg font-black text-white whitespace-nowrap">+91 98251 89167</p>
                                     </div>
                                 </a>
 

@@ -5,11 +5,36 @@ import { CheckCircle2, ShieldAlert, MonitorCheck, Microscope, PackageSearch } fr
 import inspectionHeroImg from '../../assets/services/inspection_process.png';
 
 const steps = [
-    { title: 'Visual Audit', desc: 'Material grade verification upon arrival.', icon: Microscope },
-    { title: 'Spectro-Scan', desc: 'Precise chemical composition mapping.', icon: MonitorCheck },
-    { title: 'Physical Test', desc: 'Density, magnetic, and stress tests.', icon: ShieldAlert },
-    { title: 'Certification', desc: 'Final grading and compliance logs.', icon: CheckCircle2 },
-    { title: 'Secure Seal', desc: 'Premium wrapping for international transit.', icon: PackageSearch },
+    {
+        title: 'Visual Audit',
+        desc: 'Material grade verification upon arrival.',
+        longDesc: 'Our specialists perform high-definition surface inspections to identify alloy type and primary cleanliness quality.',
+        icon: Microscope
+    },
+    {
+        title: 'Spectro-Scan',
+        desc: 'Precise chemical composition mapping.',
+        longDesc: 'Using advanced XRF technology, we map the exact chemical fingerprint of every material batch down to 0.01% precision.',
+        icon: MonitorCheck
+    },
+    {
+        title: 'Physical Test',
+        desc: 'Density, magnetic, and stress tests.',
+        longDesc: 'Rigorous testing to verify weight-to-volume ratios and magnetic properties, ensuring zero contamination of non-ferrous loads.',
+        icon: ShieldAlert
+    },
+    {
+        title: 'Certification',
+        desc: 'Final grading and compliance logs.',
+        longDesc: 'Every verified batch is issued a digital compliance certificate, meeting international smelting and recycling standards.',
+        icon: CheckCircle2
+    },
+    {
+        title: 'Secure Seal',
+        desc: 'Premium wrapping for international transit.',
+        longDesc: 'Moisture-proof wrapping and heavy-duty steel strapping ensure that the cargo maintains its quality throughout the global journey.',
+        icon: PackageSearch
+    },
 ];
 
 const InspectionProcess = () => {
@@ -17,7 +42,7 @@ const InspectionProcess = () => {
         <section className="py-32 bg-[#F8F9FA] overflow-hidden relative">
 
             {/* Background Accent: Large Industrial Numbering */}
-            <div className="absolute top-0 right-[-10%] text-[40rem] font-black text-black/[0.02] leading-none select-none">
+            <div className="absolute top-0 right-[-10%] text-[40rem] font-black text-black/[0.02] leading-none select-none pointer-events-none">
                 02
             </div>
 
@@ -50,19 +75,33 @@ const InspectionProcess = () => {
                                     initial={{ opacity: 0, y: 10 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="flex items-center gap-6 p-6 rounded-[2rem] bg-white border border-secondary/5 hover:border-primary/20 hover:shadow-[0_20px_60px_rgba(243,112,33,0.1)] transition-all duration-500 group"
+                                    className="relative flex flex-col p-6 rounded-[2.5rem] bg-white border border-secondary/5 hover:border-primary/20 hover:shadow-[0_20px_80px_rgba(243,112,33,0.12)] transition-all duration-700 group overflow-hidden cursor-pointer"
                                 >
-                                    <div className="w-14 h-14 rounded-2xl bg-secondary/5 flex items-center justify-center group-hover:bg-primary transition-colors duration-500">
-                                        <step.icon className="text-secondary group-hover:text-white transition-colors" size={24} />
+                                    <div className="flex items-center gap-6 relative z-10">
+                                        <div className="w-14 h-14 rounded-2xl bg-secondary/5 flex items-center justify-center group-hover:bg-primary transition-colors duration-500 shadow-sm">
+                                            <step.icon className="text-secondary group-hover:text-white transition-colors" size={24} />
+                                        </div>
+                                        <div className="flex-grow">
+                                            <h4 className="text-lg font-black uppercase tracking-tight text-secondary group-hover:text-primary transition-colors">{step.title}</h4>
+                                            <p className="text-secondary/40 text-[10px] font-bold uppercase tracking-[0.2em] mt-1 pr-10">{step.desc}</p>
+                                        </div>
+                                        <div className="h-10 w-px bg-secondary/5 group-hover:bg-primary/20 transition-colors" />
+                                        <div className="text-secondary/10 font-black group-hover:text-primary/30 transition-colors text-2xl tracking-tighter">
+                                            0{index + 1}
+                                        </div>
                                     </div>
-                                    <div className="flex-grow">
-                                        <h4 className="text-lg font-black uppercase tracking-tight text-secondary group-hover:text-primary transition-colors">{step.title}</h4>
-                                        <p className="text-secondary/40 text-[10px] font-bold uppercase tracking-[0.2em] mt-1 pr-10">{step.desc}</p>
+
+                                    {/* Expandable Content on Hover */}
+                                    <div className="max-h-0 opacity-0 group-hover:max-h-[150px] group-hover:opacity-100 group-hover:mt-6 transition-all duration-700 ease-in-out">
+                                        <div className="pt-6 border-t border-secondary/5">
+                                            <p className="text-secondary/60 font-medium italic text-sm leading-relaxed max-w-[90%]">
+                                                "{step.longDesc}"
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div className="h-10 w-px bg-secondary/5 group-hover:bg-primary/20 transition-colors" />
-                                    <div className="text-secondary/10 font-bold group-hover:text-primary/20 transition-colors">
-                                        0{index + 1}
-                                    </div>
+
+                                    {/* Subtle Gradient Accent */}
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/[0.03] rounded-bl-full -z-0 translate-x-16 -translate-y-16 group-hover:translate-x-8 group-hover:-translate-y-8 transition-transform duration-1000" />
                                 </motion.div>
                             ))}
                         </div>

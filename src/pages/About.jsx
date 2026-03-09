@@ -4,7 +4,7 @@ import AboutDesktop from '../components/about/AboutDesktop';
 import AboutMobile from '../components/about/AboutMobile';
 import Timeline from '../components/about/Timeline';
 import CoreValues from '../components/about/CoreValues';
-import Certifications from '../components/about/Certifications';
+import OurProcess from '../components/about/OurProcess';
 
 const About = () => {
     return (
@@ -14,7 +14,7 @@ const About = () => {
 
             <Timeline />
             <CoreValues />
-            <Certifications />
+            <OurProcess />
         </div>
     );
 };

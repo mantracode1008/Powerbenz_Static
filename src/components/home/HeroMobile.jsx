@@ -60,7 +60,7 @@ const HeroMobile = () => {
                 {/* Main Heading */}
                 <div className="mb-8">
                     <motion.h1
-                        className="text-[14vw] font-black uppercase tracking-tighter leading-[0.95]"
+                        className="text-[12vw] font-black uppercase tracking-tighter leading-[0.95]"
                     >
                         <motion.span
                             initial={{ opacity: 0, x: -20 }}

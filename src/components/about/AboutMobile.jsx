@@ -23,7 +23,7 @@ const AboutMobile = () => {
                     <motion.h1
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="text-6xl font-black text-secondary tracking-tighter uppercase leading-[0.85] mb-2"
+                        className="text-5xl font-black text-secondary tracking-tighter uppercase leading-[0.85] mb-2"
                     >
                         Power<br />Benz
                     </motion.h1>
@@ -31,7 +31,7 @@ const AboutMobile = () => {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-5xl font-black tracking-tighter uppercase leading-none text-transparent"
+                        className="text-4xl font-black tracking-tighter uppercase leading-none text-transparent"
                         style={{ WebkitTextStroke: '1px #011627' }}
                     >
                         Industries

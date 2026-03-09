@@ -63,7 +63,7 @@ const OurStory = React.memo(() => {
 
                     <motion.img
                         style={{ scale: imageScale }}
-                        src="/images/our-story.webp"
+                        src="/images/our-story.png"
                         alt="Scrap Metal Processing"
                         loading="lazy"
                         decoding="async"

@@ -1,70 +1,70 @@
 import React from 'react';
-import { History, Globe, ShieldCheck, Award } from 'lucide-react';
+import { History, ShieldCheck, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 
 const stats = [
     {
         id: 1,
-        icon: Globe,
-        value: '35',
-        label: 'Countries Served',
-        desc: 'Global Reach'
+        icon: History,
+        value: '22',
+        suffix: '+',
+        label: 'Years of Leadership',
+        desc: 'Industry Pioneers Since 2003'
     },
     {
         id: 2,
-        icon: History,
-        value: '22',
-        label: 'Years of Excellence',
-        desc: 'Established 2003'
-    },
-    {
-        id: 3,
-        icon: ShieldCheck,
-        value: '100',
-        label: 'Quality Assurance',
-        desc: 'ISO Certified'
+        icon: Zap,
+        value: '500',
+        suffix: 'k+',
+        label: 'Metric Tons Recycled',
+        desc: 'Annual Capacity'
     },
     {
         id: 4,
-        icon: Award,
-        value: '50',
-        label: 'Industry Awards',
-        desc: 'Recognized Leader'
+        icon: ShieldCheck,
+        value: '100',
+        suffix: '%',
+        label: 'Trade Transparency',
+        desc: 'Ethics Driven'
     },
 ];
 
 const Stats = React.memo(() => {
     return (
-        <section className="py-24 bg-white relative z-20">
+        <section className="py-24 bg-[#F8FAFC] relative z-20 overflow-hidden">
+            {/* Background Accent */}
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 pointer-events-none" />
+
             <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={stat.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="group relative p-8 bg-[#F8FAFC] rounded-3xl border border-secondary/5 hover:border-primary/20 transition-all duration-500 hover:shadow-xl hover:-translate-y-2"
+                            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            className="bg-white p-10 rounded-[3rem] shadow-xl shadow-secondary/5 border border-secondary/5 hover:border-primary/30 transition-all duration-700 hover:-translate-y-4 group"
                         >
-                            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                                <stat.icon size={64} className="text-secondary group-hover:text-primary transition-colors" />
-                            </div>
-
-                            <div className="mb-6">
-                                <div className="w-12 h-12 bg-white rounded-xl shadow-md flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                    <stat.icon size={24} className="text-primary" />
+                            <div className="relative mb-10 overflow-hidden">
+                                <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+                                    <stat.icon size={28} />
                                 </div>
-                                <h3 className="text-5xl font-black text-secondary mb-2 tracking-tighter">
-                                    <CountUp end={parseInt(stat.value)} duration={2.5} />
-                                    <span className="text-primary text-3xl">+</span>
-                                </h3>
-                                <div className="h-1 w-12 bg-secondary/10 group-hover:w-full group-hover:bg-primary transition-all duration-500 mb-4" />
+                                <div className="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity">
+                                    <stat.icon size={120} />
+                                </div>
                             </div>
 
-                            <h4 className="text-xl font-bold text-secondary mb-1">{stat.label}</h4>
-                            <p className="text-sm font-medium text-secondary/40 uppercase tracking-wider">{stat.desc}</p>
+                            <h3 className="text-6xl font-black text-secondary mb-3 tracking-tighter leading-none">
+                                <CountUp end={parseInt(stat.value)} duration={3} enableScrollSpy />
+                                <span className="text-primary">{stat.suffix}</span>
+                            </h3>
+
+                            <div className="w-8 h-1 bg-primary/20 mb-6 group-hover:w-16 transition-all duration-500" />
+
+                            <h4 className="text-xl font-black text-secondary uppercase tracking-tight mb-2">{stat.label}</h4>
+                            <p className="text-xs font-bold text-secondary/40 uppercase tracking-widest">{stat.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -74,3 +74,4 @@ const Stats = React.memo(() => {
 });
 
 export default Stats;
+

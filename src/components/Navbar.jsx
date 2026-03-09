@@ -8,7 +8,7 @@ import MobileMenu from './MobileMenu';
 
 const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
+    { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
 ];
 
@@ -29,7 +29,7 @@ const Navbar = React.memo(() => {
 
     return (
         <header>
-            <nav className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${scrolled ? 'h-20 bg-[#011627]/95 backdrop-blur-xl shadow-2xl' : 'h-24 bg-transparent'
+            <nav className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${scrolled ? 'h-16 md:h-20 bg-[#011627]/95 backdrop-blur-xl shadow-2xl' : 'h-20 md:h-24 bg-transparent'
                 }`}>
                 <div className="max-w-[1800px] mx-auto h-full px-4 md:px-12 flex justify-between items-center">
 
@@ -40,10 +40,10 @@ const Navbar = React.memo(() => {
                                 <img src={logo} alt="Powerbenz" className="h-8 md:h-10 w-auto" width="40" height="40" loading="eager" />
                             </div>
                             <div className="flex flex-col items-start justify-center -space-y-1">
-                                <h1 className="text-lg md:text-2xl font-serif font-black text-white tracking-widest uppercase leading-none">
+                                <h1 className="text-base md:text-2xl font-serif font-black text-white tracking-widest uppercase leading-none">
                                     POWERBENZ
                                 </h1>
-                                <span className="text-[7px] md:text-[9px] font-sans text-white/80 tracking-[0.2em] font-medium uppercase">
+                                <span className="text-[6px] md:text-[9px] font-sans text-white/80 tracking-[0.2em] font-medium uppercase">
                                     INDUSTRIES PVT. LTD.
                                 </span>
                             </div>

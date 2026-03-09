@@ -12,11 +12,11 @@ import deepImg from '../../assets/leadership/deep.png';
 // const mayurbhaiImg = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
 
 const leaders = [
-    { name: 'Jerambhai Isamaliya ', role: 'Founder', img: jerambhaiImg },
-    { name: 'Prakashbhai Khanpara', role: 'Founder', img: prakashbhaiImg },
-    { name: 'Mayurbhai Bokarvadiya', role: 'Managing Director', img: null },
-    { name: 'Ravi Italiya', role: 'CEO', img: raviImg },
-    { name: 'Deep Rasadiya', role: 'Executive Director', img: deepImg },
+    { name: 'Jerambhai   Isamaliya ', role: 'Founder', img: jerambhaiImg },
+    { name: 'Prakashbhai   Khanpara', role: 'Founder', img: prakashbhaiImg },
+    { name: 'Mayurbhai   Bokarvadiya', role: 'Managing Director', img: null },
+    { name: 'Ravi   Italiya', role: 'CEO', img: raviImg },
+    { name: 'Deep   Rasadiya', role: 'Executive Director', img: deepImg },
 ];
 
 const LeadershipMobile = React.memo(() => {
@@ -73,7 +73,7 @@ const LeadershipMobile = React.memo(() => {
 
                             {/* Name & Role */}
                             <div className="text-center">
-                                <h3 className="text-xl font-black text-secondary uppercase tracking-tight mb-1">
+                                <h3 className="text-xl font-black text-secondary uppercase tracking-tight mb-1 whitespace-pre-wrap">
                                     {member.name}
                                 </h3>
                                 <p className="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">
