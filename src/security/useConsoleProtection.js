@@ -29,7 +29,6 @@ const useConsoleProtection = ({
         }
 
         // Override console methods to no-op
-        // We store original methods to restore them on cleanup
         const originalConsole = {
             log: console.log,
             warn: console.warn,

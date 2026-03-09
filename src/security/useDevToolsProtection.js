@@ -17,35 +17,35 @@ const useDevToolsProtection = ({
             if (!disableShortcuts) return;
 
             // F12
-            if (e.key === 'F12') {
+            if (e.key === 'F12' || e.keyCode === 123) {
                 e.preventDefault();
                 e.stopPropagation();
                 return false;
             }
 
             // Ctrl+Shift+I (Inspect)
-            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.keyCode === 73)) {
                 e.preventDefault();
                 e.stopPropagation();
                 return false;
             }
 
             // Ctrl+Shift+J (Console)
-            if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+            if (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.keyCode === 74)) {
                 e.preventDefault();
                 e.stopPropagation();
                 return false;
             }
 
             // Ctrl+Shift+C (Inspect Element)
-            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+            if (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.keyCode === 67)) {
                 e.preventDefault();
                 e.stopPropagation();
                 return false;
             }
 
             // Ctrl+U (View Source)
-            if (e.ctrlKey && e.key === 'u') {
+            if (e.ctrlKey && (e.key === 'u' || e.keyCode === 85)) {
                 e.preventDefault();
                 e.stopPropagation();
                 return false;

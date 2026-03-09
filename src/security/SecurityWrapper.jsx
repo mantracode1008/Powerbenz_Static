@@ -11,6 +11,7 @@ import WatermarkOverlay from './WatermarkOverlay';
  */
 const SecurityWrapper = ({
     children,
+    watermarkText = 'Powerbenz',
     config = {
         devTools: {
             enabled: true,
@@ -26,7 +27,7 @@ const SecurityWrapper = ({
             allowedClass: 'allow-copy'
         },
         domain: {
-            enabled: false, // Default off to prevent accidental locking during dev
+            enabled: false,
             allowedDomains: ['localhost', '127.0.0.1', 'powerbenz.com'],
             redirectUrl: 'https://google.com'
         },
@@ -37,7 +38,6 @@ const SecurityWrapper = ({
         },
         watermark: {
             enabled: true,
-            text: 'Protected Content - Powerbenz',
             blurOnInactive: true
         }
     }
@@ -70,8 +70,6 @@ const SecurityWrapper = ({
         clearConsole: config.console.enabled && config.console.clearConsole,
         disableLogging: config.console.enabled && config.console.disableLogging
     });
-
-    // Render Logic
 
     // Unauthorized Domain
     if (!isAuthorized) {
@@ -118,9 +116,22 @@ const SecurityWrapper = ({
     return (
         <>
             <WatermarkOverlay
-                showWatermark={false}
-                text={config.watermark.text}
+                showWatermark={config.watermark.enabled}
+                text={watermarkText}
                 blurOnInactive={config.watermark.enabled && config.watermark.blurOnInactive}
+            />
+            {/* Additional invisible overlay to prevent right-click */}
+            <div
+                onContextMenu={(e) => e.preventDefault()}
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    zIndex: 9998,
+                    pointerEvents: 'none',
+                }}
             />
             {children}
         </>

@@ -8,6 +8,10 @@ import PageTransition from './components/PageTransition';
 import ScrollToTop from './components/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
+import SecurityWrapper from './security/SecurityWrapper'; // Import SecurityWrapper
+
+import AnimatedBackground from './components/AnimatedBackground';
+import MetaTags from './components/MetaTags';
 
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -15,8 +19,6 @@ const Services = lazy(() => import('./pages/Services'));
 const Contact = lazy(() => import('./pages/Contact'));
 import SecurityWrapper from './security/SecurityWrapper';
 
-import AnimatedBackground from './components/AnimatedBackground';
-import MetaTags from './components/MetaTags';
 
 function AppContent() {
   const location = useLocation();
@@ -53,7 +55,7 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <SecurityWrapper>
+        <SecurityWrapper watermarkText="Powerbenz">
           <AppContent />
         </SecurityWrapper>
       </Router>

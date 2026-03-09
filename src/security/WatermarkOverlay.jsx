@@ -33,14 +33,12 @@ const WatermarkOverlay = ({
 
     // CSS for watermark pattern
     const watermarkStyle = {
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
         width: '100%',
         height: '100%',
-        pointerEvents: 'none', // Allows clicking through, but we want to block drag/save on images usually.
-        // Actually, user requested watermark overlay *over* images.
-        // This global overlay is more for the whole screen or specific containers.
+        pointerEvents: 'none',
         zIndex: 9999,
         opacity: 0.1,
         backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='100px' width='100px'><text transform='translate(20, 100) rotate(-45)' fill='rgb(150,150,150)' font-size='20'>${encodeURIComponent(text)}</text></svg>")`
@@ -64,21 +62,10 @@ const WatermarkOverlay = ({
 
     return (
         <>
-            {/* 
-        Global Watermark Overlay (Pointer events none so it doesn't break app usage).
-        For individual image protection, we usually rely on the CSS/JS blocking drag/context menu.
-      */}
             {showWatermark && (
-                <div style={{
-                    position: 'fixed',
-                    inset: 0,
-                    pointerEvents: 'none',
-                    zIndex: 9000,
-                    ...watermarkStyle
-                }} />
+                <div style={watermarkStyle} />
             )}
 
-            {/* Inactive Blur Overlay (Screenshot Prevention attempt) */}
             {blurOnInactive && !isActive && (
                 <div style={blurStyle}>
                     <div style={{ padding: '20px', background: 'white', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>

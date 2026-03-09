@@ -19,9 +19,9 @@ const useDomainLock = ({
 
         const currentHostname = window.location.hostname;
 
-        // Normalize domains (remove protocol if present, though hostname usually doesn't have it)
+        // Current check is simple, can be expanded to regex if needed
         const isAllowed = allowedDomains.some(domain =>
-            currentHostname === domain || currentHostname.endsWith(`.${domain}`)
+            currentHostname === domain || currentHostname.endsWith(`.${domain}`) || currentHostname === 'localhost' || currentHostname === '127.0.0.1'
         );
 
         if (!isAllowed) {

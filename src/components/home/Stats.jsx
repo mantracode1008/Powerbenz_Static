@@ -1,5 +1,5 @@
 import React from 'react';
-import { History, ShieldCheck, Zap } from 'lucide-react';
+import { History, Globe, ShieldCheck, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 
@@ -22,11 +22,11 @@ const stats = [
     },
     {
         id: 4,
-        icon: ShieldCheck,
-        value: '100',
-        suffix: '%',
-        label: 'Trade Transparency',
-        desc: 'Ethics Driven'
+        icon: Globe,
+        value: '50',
+        suffix: '+',
+        label: 'Global Partners',
+        desc: 'Trusted Network'
     },
 ];
 

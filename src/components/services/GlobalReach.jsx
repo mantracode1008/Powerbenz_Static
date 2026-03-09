@@ -34,14 +34,15 @@ const GlobalReach = () => {
                             </h2>
 
                             <p className="text-white/50 text-xl leading-relaxed font-light mb-16 max-w-lg">
-                                Through hubs in <span className="text-white font-bold">Surat</span>, <span className="text-white font-bold">Dubai</span>, and <span className="text-white font-bold">Singapore</span>, we bridge the gap between global supply and industrial demand.
+                                Through our hub in <span className="text-white font-bold">Surat</span>, we bridge the gap between global supply and industrial demand.
                             </p>
                         </motion.div>
 
                         {/* Network Stats Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {[
-                                { title: '3 Int. Hubs', icon: Zap, val: 'NODES' },
+                                { title: '35+ Countries', icon: Globe, val: 'NETWORK' },
+                                { title: '1 Strategic Hub', icon: Zap, val: 'NODE' },
                                 { title: 'Global Transit', icon: Ship, val: 'LOGISTICS' },
                                 { title: 'Verified Trade', icon: Shield, val: 'PROTOCOL' },
                                 { title: 'Digital Tracking', icon: SearchCheck, val: 'VISIBILITY' }

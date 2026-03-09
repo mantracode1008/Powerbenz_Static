@@ -62,7 +62,7 @@ const Contact = () => {
                                 style={{ opacity }}
                                 className="flex justify-center gap-4 sm:gap-10 pt-6"
                             >
-                                {['SURAT', 'DUBAI', 'SINGAPORE'].map((city) => (
+                                {['SURAT'].map((city) => (
                                     <div key={city} className="flex flex-col items-center">
                                         <span className="text-[8px] font-black text-white/20 tracking-[0.4em] mb-1">HUB</span>
                                         <span className="text-white/60 font-bold tracking-widest text-xs">{city}</span>

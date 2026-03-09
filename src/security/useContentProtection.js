@@ -15,7 +15,8 @@ const useContentProtection = ({
         const isAllowed = (target) => {
             if (!target) return false;
             if (target.classList && target.classList.contains(allowedClass)) return true;
-            return isAllowed(target.parentElement);
+            if (target.parentElement) return isAllowed(target.parentElement);
+            return false;
         };
 
         // 1. Disable Right Click (Context Menu)
