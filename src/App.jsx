@@ -17,7 +17,7 @@ const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
 const Contact = lazy(() => import('./pages/Contact'));
-import SecurityWrapper from './security/SecurityWrapper';
+
 
 
 function AppContent() {
