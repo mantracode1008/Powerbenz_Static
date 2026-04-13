@@ -6,16 +6,17 @@ import raviImg from '../../assets/leadership/ravi_italiya.jpeg';
 import jerambhaiImg from '../../assets/leadership/jerambhai.jpg';
 import prakashbhaiImg from '../../assets/leadership/prakashbhai.jpeg';
 import deepImg from '../../assets/leadership/deep.png';
+import mayurbhaiImg from '../../assets/leadership/mayurbhai.png';
 
 // Fallback for missing images
 // const mayurbhaiImg = '/images/leadership/placeholder.jpg'; // Placeholder until real image is available
 
 const leaders = [
-    { name: 'Jerambhai   Isamaliya ', role: 'Founder', img: jerambhaiImg },
-    { name: 'Prakashbhai   Khanpara', role: 'Founder', img: prakashbhaiImg },
-    { name: 'Mayurbhai   Bokarvadiya', role: 'Managing Director', img: null },
-    { name: 'Ravi   Italiya', role: 'CEO', img: raviImg },
-    { name: 'Deep   Rasadiya', role: 'Executive Director', img: deepImg },
+    { name: 'Jerambhai Isamaliya', role: 'Founder', img: jerambhaiImg },
+    { name: 'Prakashbhai Khanpara', role: 'Founder', img: prakashbhaiImg },
+    { name: 'Mayurbhai Bokarvadiya', role: 'Managing Director', img: mayurbhaiImg },
+    { name: 'Ravi Italiya', role: 'CEO', img: raviImg },
+    { name: 'Deep Rasadiya', role: 'Executive Director', img: deepImg },
 ];
 
 const LeadershipDesktop = React.memo(() => {

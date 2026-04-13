@@ -55,7 +55,7 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <SecurityWrapper watermarkText="Powerbenz">
+        <SecurityWrapper>
           <AppContent />
         </SecurityWrapper>
       </Router>

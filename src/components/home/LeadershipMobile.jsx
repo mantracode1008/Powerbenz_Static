@@ -6,17 +6,18 @@ import raviImg from '../../assets/leadership/ravi_italiya.jpeg';
 import jerambhaiImg from '../../assets/leadership/jerambhai.jpg';
 import prakashbhaiImg from '../../assets/leadership/prakashbhai.jpeg';
 import deepImg from '../../assets/leadership/deep.png';
+import mayurbhaiImg from '../../assets/leadership/mayurbhai.png';
 
 // Fallback for missing images
 // Fallback for missing images
 // const mayurbhaiImg = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80';
 
 const leaders = [
-    { name: 'Jerambhai   Isamaliya ', role: 'Founder', img: jerambhaiImg },
-    { name: 'Prakashbhai   Khanpara', role: 'Founder', img: prakashbhaiImg },
-    { name: 'Mayurbhai   Bokarvadiya', role: 'Managing Director', img: null },
-    { name: 'Ravi   Italiya', role: 'CEO', img: raviImg },
-    { name: 'Deep   Rasadiya', role: 'Executive Director', img: deepImg },
+    { name: 'Jerambhai Isamaliya', role: 'Founder', img: jerambhaiImg },
+    { name: 'Prakashbhai Khanpara', role: 'Founder', img: prakashbhaiImg },
+    { name: 'Mayurbhai Bokarvadiya', role: 'Managing Director', img: mayurbhaiImg },
+    { name: 'Ravi Italiya', role: 'CEO', img: raviImg },
+    { name: 'Deep Rasadiya', role: 'Executive Director', img: deepImg },
 ];
 
 const LeadershipMobile = React.memo(() => {

@@ -3,7 +3,6 @@ import useDevToolsProtection from './useDevToolsProtection';
 import useContentProtection from './useContentProtection';
 import useDomainLock from './useDomainLock';
 import useConsoleProtection from './useConsoleProtection';
-import WatermarkOverlay from './WatermarkOverlay';
 
 /**
  * Main Security Wrapper Component.
@@ -35,10 +34,6 @@ const SecurityWrapper = ({
             enabled: true,
             clearConsole: true,
             disableLogging: true
-        },
-        watermark: {
-            enabled: true,
-            blurOnInactive: true
         }
     }
 }) => {
@@ -115,11 +110,6 @@ const SecurityWrapper = ({
 
     return (
         <>
-            <WatermarkOverlay
-                showWatermark={config.watermark.enabled}
-                text={watermarkText}
-                blurOnInactive={config.watermark.enabled && config.watermark.blurOnInactive}
-            />
             {/* Additional invisible overlay to prevent right-click */}
             <div
                 onContextMenu={(e) => e.preventDefault()}
