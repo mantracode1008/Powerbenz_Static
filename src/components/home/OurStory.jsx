@@ -40,7 +40,7 @@ const OurStory = React.memo(() => {
                     </p>
 
                     <ul className="space-y-4 mb-10">
-                        {['Established 20+ Years Ago', 'Global Procurement Network', '100% Transparent Transactions'].map((item, i) => (
+                        {['Established 22+ Years Ago', 'Global Procurement Network', '100% Transparent Transactions'].map((item, i) => (
                             <li key={i} className="flex items-center gap-4 text-secondary font-bold text-sm uppercase tracking-wide">
                                 <span className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                                     <CheckCircle2 size={14} />
@@ -78,7 +78,7 @@ const OurStory = React.memo(() => {
                         transition={{ delay: 0.5 }}
                         className="absolute bottom-10 left-10 bg-white p-6 rounded-2xl shadow-xl max-w-xs z-20"
                     >
-                        <div className="text-4xl font-black text-primary mb-1">20+</div>
+                        <div className="text-4xl font-black text-primary mb-1">22+</div>
                         <div className="text-xs font-bold uppercase tracking-wider text-secondary/60">Years of Experience</div>
                     </motion.div>
                 </div>

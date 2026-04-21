@@ -3,7 +3,6 @@ import ServiceGrid from '../components/services/ServiceGrid';
 import GlobalReach from '../components/services/GlobalReach';
 import InspectionProcess from '../components/services/InspectionProcess';
 import LogisticsGallery from '../components/services/LogisticsGallery';
-import ProductCategories from '../components/services/ProductCategories';
 import { motion } from 'framer-motion';
 
 const Services = () => {
@@ -37,9 +36,6 @@ const Services = () => {
                     </motion.div>
                 </div>
             </section>
-
-            {/* Product Categories Section */}
-            <ProductCategories />
 
             {/* Content Sections */}
             <div className="bg-white">

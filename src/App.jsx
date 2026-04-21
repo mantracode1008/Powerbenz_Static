@@ -16,6 +16,7 @@ import MetaTags from './components/MetaTags';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
 const Services = lazy(() => import('./pages/Services'));
+const Products = lazy(() => import('./pages/Products'));
 const Contact = lazy(() => import('./pages/Contact'));
 
 
@@ -41,6 +42,7 @@ function AppContent() {
               <Route path="/" element={<PageTransition><Home /></PageTransition>} />
               <Route path="/about" element={<PageTransition><About /></PageTransition>} />
               <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+              <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
               <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
             </Routes>
           </AnimatePresence>

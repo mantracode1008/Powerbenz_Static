@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import raviImg from '../../assets/leadership/ravi_italiya.jpeg';
 import jerambhaiImg from '../../assets/leadership/jerambhai.jpg';
 import prakashbhaiImg from '../../assets/leadership/prakashbhai.jpeg';
-import deepImg from '../../assets/leadership/deep.png';
+import deepImg from '../../assets/leadership/deep.jpg';
 import mayurbhaiImg from '../../assets/leadership/mayurbhai.png';
 
 // Fallback for missing images
@@ -73,7 +73,7 @@ const LeadershipDesktop = React.memo(() => {
                                             alt={member.name}
                                             loading="lazy"
                                             decoding="async"
-                                            className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                                            className="w-full h-full object-cover object-top filter grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105"
                                         />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center bg-secondary/5 text-secondary/20">
