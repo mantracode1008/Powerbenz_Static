@@ -201,18 +201,120 @@ const Products = () => {
     const [heroVisible, setHeroVisible]     = useState(false);
     const heroRef = useRef(null);
 
+    const [isMobile, setIsMobile]           = useState(typeof window !== 'undefined' ? window.innerWidth <= 1100 : false);
+
     const cat     = CATEGORIES.find(c => c.key === activeCat);
     const product = cat.products.find(p => p.id === activeProduct) || cat.products[0];
 
     useEffect(() => {
         const t = setTimeout(() => setHeroVisible(true), 80);
-        return () => clearTimeout(t);
+        const handleResize = () => setIsMobile(window.innerWidth <= 1100);
+        window.addEventListener('resize', handleResize);
+        return () => {
+            clearTimeout(t);
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     const switchCat = (key) => {
         setActiveCat(key);
         setActiveProduct(CATEGORIES.find(c => c.key === key).products[0].id);
     };
+
+    const detailPanelNode = (
+        <AnimatePresence mode="wait">
+            <motion.div
+                key={product.id}
+                className="pp-detail"
+                style={{ '--ac': cat.accent, '--glow': cat.glow }}
+                initial={{ opacity: 0, height: 0, y: isMobile ? 0 : 24 }}
+                animate={{ opacity: 1, height: 'auto', y: 0 }}
+                exit={{ opacity: 0, height: 0, y: isMobile ? 0 : -16 }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+                {/* Stage image */}
+                <div className="pp-detail__stage">
+                    {/* Blurred placeholder behind main image */}
+                    <img
+                        src={product.image}
+                        alt=""
+                        aria-hidden="true"
+                        style={{
+                            position: 'absolute', inset: 0,
+                            width: '100%', height: '100%',
+                            objectFit: 'cover',
+                            filter: 'blur(24px) brightness(0.25)',
+                            transform: 'scale(1.1)',
+                            zIndex: 0,
+                        }}
+                    />
+                    {/* Main image — always visible */}
+                    <img
+                        src={product.image}
+                        alt={product.title}
+                        className="pp-detail__img"
+                        style={{ zIndex: 1 }}
+                    />
+                    <div className="pp-detail__overlay" style={{ zIndex: 2 }} />
+                    <div className="pp-detail__watermark" style={{ zIndex: 3 }}>{product.code}</div>
+                    <div className="pp-detail__floating-badge" style={{ zIndex: 4 }}>
+                        <span className="pp-detail__floating-dot" />
+                        <span className="pp-detail__floating-text">{product.badge}</span>
+                    </div>
+                    <div className="pp-detail__corner-cta" style={{ zIndex: 4 }}>
+                        <Link to="/contact" className="pp-detail__cta-btn">
+                            <span className="pp-detail__cta-text">Request Quote</span>
+                            <span className="pp-detail__cta-arrow">→</span>
+                        </Link>
+                    </div>
+                </div>
+
+                {/* Info + Specs */}
+                <div className="pp-detail__info">
+                    <div className="pp-detail__title-block">
+                        <div
+                            className="pp-detail__badge-pill"
+                            style={{
+                                background: cat.accent + '18',
+                                color: cat.accent,
+                                border: `1px solid ${cat.accent}35`,
+                            }}
+                        >
+                            <span style={{
+                                display: 'inline-block',
+                                width: 6, height: 6,
+                                borderRadius: '50%',
+                                background: cat.accent,
+                            }} />
+                            {product.badge}
+                        </div>
+                        <h2 className="pp-detail__title">{product.title}</h2>
+                        <p className="pp-detail__tagline">{product.tagline}</p>
+                        <div className="pp-detail__divider" style={{ background: cat.accent }} />
+                        <p className="pp-detail__desc">{product.description}</p>
+                    </div>
+
+                    <div className="pp-detail__specs">
+                        <p className="pp-specs-title">Technical Specifications</p>
+                        <div className="pp-specs-grid">
+                            {product.specs.map((s, i) => (
+                                <motion.div
+                                    key={i}
+                                    className="pp-spec-card"
+                                    initial={{ opacity: 0, scale: 0.92 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: i * 0.07, duration: 0.28 }}
+                                >
+                                    <span className="pp-spec-card__label">{s.label}</span>
+                                    <span className="pp-spec-card__value">{s.value}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+        </AnimatePresence>
+    );
 
     return (
         <div className="products-page">
@@ -357,7 +459,13 @@ const Products = () => {
                     align-items: start;
                 }
                 @media (max-width: 1100px) {
-                    .pp-catalog { grid-template-columns: 1fr; padding: 0 20px 60px; }
+                    .pp-catalog { 
+                        display: flex; flex-direction: column;
+                        padding: 0 20px 60px; 
+                        max-width: 100%; 
+                        width: 100vw;
+                        box-sizing: border-box;
+                    }
                 }
 
                 /* ══ SIDEBAR ═══════════════════════════════════════════════════ */
@@ -373,6 +481,13 @@ const Products = () => {
                         border-bottom: 1px solid rgba(255,255,255,0.06);
                         padding: 32px 0;
                         position: static;
+                        width: 100%;
+                        max-width: 100%;
+                        box-sizing: border-box;
+                    }
+                    .pp-cat-tabs {
+                        display: flex;
+                        flex-wrap: wrap; /* Ensure tabs wrap if they don't fit */
                     }
                 }
 
@@ -435,12 +550,15 @@ const Products = () => {
                 }
                 @media (max-width: 768px) {
                     .pp-list { 
-                        display: flex; flex-direction: row; 
-                        overflow-x: auto; padding-bottom: 12px; 
-                        scrollbar-width: none;
+                        display: grid;
+                        grid-template-columns: 1fr;
+                        gap: 8px;
+                        max-width: 100%;
                     }
-                    .pp-list::-webkit-scrollbar { display: none; }
-                    .pp-list-item { flex: 0 0 calc(100vw - 64px); }
+                    .pp-list-item { 
+                        border: 1px solid rgba(255,255,255,0.05);
+                        background: rgba(255,255,255,0.015);
+                    }
                 }
                 .pp-list-item {
                     display: flex; align-items: center; gap: 0;
@@ -523,11 +641,15 @@ const Products = () => {
                 }
                 .pp-list-item--active .pp-list-item__active-line { transform: scaleY(1); }
 
+
                 /* ══ DETAIL PANEL ══════════════════════════════════════════════ */
                 .pp-detail {
                     position: relative;
                     min-height: 800px;
                     display: flex; flex-direction: column;
+                }
+                @media (max-width: 1100px) {
+                    .pp-detail { min-height: auto; padding-bottom: 24px; }
                 }
                 .pp-detail__stage {
                     position: relative;
@@ -591,20 +713,29 @@ const Products = () => {
                 .pp-detail__corner-cta {
                     position: absolute; bottom: 28px; right: 28px;
                 }
-                @media (max-width: 768px) {
-                    .pp-detail__corner-cta { bottom: 16px; right: 16px; left: 16px; }
-                    .pp-detail__cta-btn { justify-content: center; width: 100%; }
-                }
                 .pp-detail__cta-btn {
-                    display: flex; align-items: center; gap: 10px;
+                    display: flex; align-items: center; justify-content: space-between; gap: 10px;
                     background: rgba(6,16,26,0.8);
                     backdrop-filter: blur(12px);
                     border: 1px solid rgba(255,255,255,0.15);
                     border-radius: 14px;
-                    padding: 12px 22px;
-                    cursor: pointer;
-                    transition: all 0.3s;
+                    padding: 14px 24px;
                     text-decoration: none;
+                    width: max-content;
+                    transition: all 0.3s;
+                    min-height: 54px;
+                }
+                @media (max-width: 768px) {
+                    .pp-detail__corner-cta { bottom: 20px; right: 20px; left: 20px; z-index: 10 !important; }
+                    .pp-detail__cta-btn { 
+                        justify-content: center; width: 100%; 
+                        background: var(--ac);
+                        border: none;
+                        box-shadow: 0 8px 24px -6px var(--glow);
+                        min-height: 48px;
+                    }
+                    .pp-detail__cta-text { color: #fff; font-size: 13px; }
+                    .pp-detail__cta-arrow { color: #fff; }
                 }
                 .pp-detail__cta-btn:hover {
                     background: var(--ac);
@@ -873,125 +1004,37 @@ const Products = () => {
                             transition={{ duration: 0.28 }}
                         >
                             {cat.products.map((p, idx) => (
-                                <motion.button
-                                    key={p.id}
-                                    className={`pp-list-item ${activeProduct === p.id ? 'pp-list-item--active' : ''}`}
-                                    style={{ '--ac': cat.accent }}
-                                    onClick={() => setActiveProduct(p.id)}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.25, delay: idx * 0.05 }}
-                                    whileTap={{ scale: 0.98 }}
-                                >
-                                    <div className="pp-list-item__active-line" />
-                                    <div className="pp-list-item__img-wrap">
-                                        <img src={p.image} alt={p.shortTitle} className="pp-list-item__img" loading="lazy" />
-                                    </div>
-                                    <div className="pp-list-item__info">
-                                        <span className="pp-list-item__code">{p.code}</span>
-                                        <span className="pp-list-item__title">{p.title}</span>
-                                        <span className="pp-list-item__badge">{p.badge}</span>
-                                    </div>
-                                    <div className="pp-list-item__arrow">›</div>
-                                </motion.button>
+                                <React.Fragment key={p.id}>
+                                    <motion.button
+                                        className={`pp-list-item ${activeProduct === p.id ? 'pp-list-item--active' : ''}`}
+                                        style={{ '--ac': cat.accent }}
+                                        onClick={() => setActiveProduct(p.id)}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.25, delay: idx * 0.05 }}
+                                        whileTap={{ scale: 0.98 }}
+                                    >
+                                        <div className="pp-list-item__active-line" />
+                                        <div className="pp-list-item__img-wrap">
+                                            <img src={p.image} alt={p.shortTitle} className="pp-list-item__img" loading="lazy" />
+                                        </div>
+                                        <div className="pp-list-item__info">
+                                            <span className="pp-list-item__code">{p.code}</span>
+                                            <span className="pp-list-item__title">{p.title}</span>
+                                            <span className="pp-list-item__badge">{p.badge}</span>
+                                        </div>
+                                        <div className="pp-list-item__arrow">›</div>
+                                    </motion.button>
+                                    
+                                    {isMobile && activeProduct === p.id && detailPanelNode}
+                                </React.Fragment>
                             ))}
                         </motion.div>
                     </AnimatePresence>
                 </aside>
 
                 {/* Detail Panel */}
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={product.id}
-                        className="pp-detail"
-                        style={{ '--ac': cat.accent, '--glow': cat.glow }}
-                        initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -16 }}
-                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                        {/* Stage image */}
-                        <div className="pp-detail__stage">
-                            {/* Blurred placeholder behind main image */}
-                            <img
-                                src={product.image}
-                                alt=""
-                                aria-hidden="true"
-                                style={{
-                                    position: 'absolute', inset: 0,
-                                    width: '100%', height: '100%',
-                                    objectFit: 'cover',
-                                    filter: 'blur(24px) brightness(0.25)',
-                                    transform: 'scale(1.1)',
-                                    zIndex: 0,
-                                }}
-                            />
-                            {/* Main image — always visible */}
-                            <img
-                                src={product.image}
-                                alt={product.title}
-                                className="pp-detail__img"
-                                style={{ zIndex: 1 }}
-                            />
-                            <div className="pp-detail__overlay" style={{ zIndex: 2 }} />
-                            <div className="pp-detail__watermark" style={{ zIndex: 3 }}>{product.code}</div>
-                            <div className="pp-detail__floating-badge" style={{ zIndex: 4 }}>
-                                <span className="pp-detail__floating-dot" />
-                                <span className="pp-detail__floating-text">{product.badge}</span>
-                            </div>
-                            <div className="pp-detail__corner-cta" style={{ zIndex: 4 }}>
-                                <Link to="/contact" className="pp-detail__cta-btn">
-                                    <span className="pp-detail__cta-text">Request Quote</span>
-                                    <span className="pp-detail__cta-arrow">→</span>
-                                </Link>
-                            </div>
-                        </div>
-
-                        {/* Info + Specs */}
-                        <div className="pp-detail__info">
-                            <div className="pp-detail__title-block">
-                                <div
-                                    className="pp-detail__badge-pill"
-                                    style={{
-                                        background: cat.accent + '18',
-                                        color: cat.accent,
-                                        border: `1px solid ${cat.accent}35`,
-                                    }}
-                                >
-                                    <span style={{
-                                        display: 'inline-block',
-                                        width: 6, height: 6,
-                                        borderRadius: '50%',
-                                        background: cat.accent,
-                                    }} />
-                                    {product.badge}
-                                </div>
-                                <h2 className="pp-detail__title">{product.title}</h2>
-                                <p className="pp-detail__tagline">{product.tagline}</p>
-                                <div className="pp-detail__divider" style={{ background: cat.accent }} />
-                                <p className="pp-detail__desc">{product.description}</p>
-                            </div>
-
-                            <div className="pp-detail__specs">
-                                <p className="pp-specs-title">Technical Specifications</p>
-                                <div className="pp-specs-grid">
-                                    {product.specs.map((s, i) => (
-                                        <motion.div
-                                            key={i}
-                                            className="pp-spec-card"
-                                            initial={{ opacity: 0, scale: 0.92 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            transition={{ delay: i * 0.07, duration: 0.28 }}
-                                        >
-                                            <span className="pp-spec-card__label">{s.label}</span>
-                                            <span className="pp-spec-card__value">{s.value}</span>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
+                {!isMobile && detailPanelNode}
             </div>
 
             {/* ── CTA Strip ──────────────────────────────────────────────────── */}

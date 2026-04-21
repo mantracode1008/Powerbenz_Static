@@ -8,7 +8,7 @@ import PageTransition from './components/PageTransition';
 import ScrollToTop from './components/ScrollToTop';
 import { AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import SecurityWrapper from './security/SecurityWrapper'; // Import SecurityWrapper
+
 
 import AnimatedBackground from './components/AnimatedBackground';
 import MetaTags from './components/MetaTags';
@@ -57,9 +57,7 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <SecurityWrapper>
-          <AppContent />
-        </SecurityWrapper>
+        <AppContent />
       </Router>
     </ErrorBoundary>
   );
